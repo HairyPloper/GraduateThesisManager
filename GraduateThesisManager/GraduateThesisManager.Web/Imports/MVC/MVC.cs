@@ -35,6 +35,11 @@ namespace MVC
                 public const string DashboardIndex = "~/Modules/Common/Dashboard/DashboardIndex.cshtml";
             }
 
+            public static class Messages
+            {
+                public const string MessagesIndex = "~/Modules/Common/Messages/MessagesIndex.cshtml";
+            }
+
             public static class Reporting
             {
                 public const string ReportPage = "~/Modules/Common/Reporting/ReportPage.cshtml";

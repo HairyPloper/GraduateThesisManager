@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Common.Messages.EntityPlural");
+}
+@section Head {
+    <script src="/Scripts/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js?v=W_0EZ2XVhnAa5TM3EOqH_A2" type="text/javascript"></script>
+    <link href="/Scripts/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css?v=OHilsAe2txpzNvehgLErxg2" rel="stylesheet" type="text/css">
+}
+<div class="row">
+    <!-- quick email widget -->
+    <div class="box box-info">
+        <div class="box-header">
+            <i class="fa fa-envelope"></i>
+            <h3 class="box-title">Quick Email</h3>
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+                <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+            </div><!-- /. tools -->
+        </div>
+        <div class="box-body">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <input id="emailto" type="email" class="form-control" name="emailto" placeholder="Email to:">
+                </div>
+                <div class="form-group">
+                    <input id="subject" type="text" class="form-control" name="subject" placeholder="Subject">
+                </div>
+                <div>
+                    <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                </div>
+            </form>
+            <button class="pull-right btn btn-default" id="sendEmail">Send <i class="fa fa-arrow-circle-right"></i></button>
+        </div>
+    </div>
+</div>
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new GraduateThesisManager.Common.MessagesGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+    //bootstrap WYSIHTML5 - text editor
+    $(".textarea").wysihtml5();
+
+    $('#sendEmail').click(function () {
+
+        var data = { subject: $("#subject").val(), to: $("#emailto").val(), message: $(".textarea").val()};
+        var json = JSON.stringify(data);
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Content("~/")Services/Common/Messages/SendMessage",
+            contentType: "application/json; charset=utf-8",
+            data: json,
+            async: "true",
+            cache: "false",
+            success: function (msg) {
+                Q.notifyInfo("Message has been sent successfully!");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                Q.notifyError(Q.text('Site.BulkServiceAction.CantFindUserWithEmail'));
+            }
+        });
+    });
+</script>

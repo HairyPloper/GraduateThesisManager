@@ -1,5 +1,6 @@
 ﻿using System.Web.Hosting;
 using System.IO;
+using System.Net;
 using System.Net.Mail;
 
 namespace GraduateThesisManager.Common
@@ -14,7 +15,15 @@ namespace GraduateThesisManager.Common
             message.Body = body;
             message.IsBodyHtml = true;
 
-            var client = new SmtpClient();
+            var client = new SmtpClient
+            {
+                Port = 587,
+                UseDefaultCredentials = false,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential("antoni.krstic@gmail.com", "Stabilo.boss944"),
+                Host = "smtp.gmail.com"
+            };
 
             if (client.DeliveryMethod == SmtpDeliveryMethod.SpecifiedPickupDirectory &&
                 string.IsNullOrEmpty(client.PickupDirectoryLocation))

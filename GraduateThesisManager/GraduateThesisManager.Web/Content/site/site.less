@@ -4,3 +4,39 @@
 @import "site.basicsamples.less";
 @import "site.membership.less";
 @import "site.northwind.less";
+@import "site.common.less";
+
+.s-Common-MessagesGrid {
+    .notChecked-type .col-checked-type {
+        background: url("../serenity/images/balloon.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        text-align: center;
+    }
+
+    .checked-type .col-entry-type {
+        background: url("../serenity/images/information-frame.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        text-align: center;
+    }
+
+    .notImportant-type .col-entry-type {
+        background: url("../serenity/images/bomb.png");
+        background-repeat: no-repeat;
+        background-position: left;
+        text-align: center;
+    }
+
+    .important-type .col-important-type {
+        background: url("../serenity/images/information-frame.png");
+        background-repeat: no-repeat;
+        background-position: right;
+        text-align: right;
+    }
+
+    height: 656px;
+    .grid-container{
+        height:415px;
+    }
+}

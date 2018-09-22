@@ -6852,7 +6852,7 @@ section.content > .s-DataGrid {
 }
 .skin-black .main-header .logo i,
 .skin-black-light .main-header .logo i {
-    background: url(images/elfak-logo-40.png) no-repeat center center;
+  background: url(images/elfak-logo-40.png) no-repeat center center;
 }
 .s-BasicProgressDialogContent .status-text {
   height: 1em;
@@ -8041,4 +8041,40 @@ section.content > .s-DataGrid {
 }
 .s-NoteDialog .ui-dialog-content {
   padding-bottom: 10px;
+}
+.s-Common-MessagesDialog > .size {
+  width: 650px;
+}
+.s-Common-MessagesDialog .caption {
+  width: 150px;
+}
+.s-Common-MessagesGrid {
+  height: 656px;
+}
+.s-Common-MessagesGrid .notChecked-type .col-checked-type {
+  background: url("../serenity/images/balloon.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  text-align: center;
+}
+.s-Common-MessagesGrid .checked-type .col-entry-type {
+  background: url("../serenity/images/information-frame.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  text-align: center;
+}
+.s-Common-MessagesGrid .notImportant-type .col-entry-type {
+  background: url("../serenity/images/bomb.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  text-align: center;
+}
+.s-Common-MessagesGrid .important-type .col-important-type {
+  background: url("../serenity/images/information-frame.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  text-align: right;
+}
+.s-Common-MessagesGrid .grid-container {
+  height: 415px;
 }

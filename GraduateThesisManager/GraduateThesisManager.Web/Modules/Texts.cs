@@ -126,6 +126,8 @@ namespace GraduateThesisManager
                 public static LocalText NothingToProcess = "Please select some records to process!";
                 public static LocalText SomeHadErrorsFormat = "Finished processing on {0} record(s) with success. {1} record(s) had errors!";
                 public static LocalText SuccessCount = "{0} done";
+                public static LocalText MessagesConfirmation = "Perform this operation on {0} selected messages?";
+                public static LocalText CantFindUserWithEmail = "Can't find a user with that e-mail adress!";
             }
 
             public static class UserDialog

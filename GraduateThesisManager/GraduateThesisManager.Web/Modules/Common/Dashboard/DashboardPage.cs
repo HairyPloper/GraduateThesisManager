@@ -1,4 +1,7 @@
 ﻿
+using System.Globalization;
+using System.Web.Services;
+
 namespace GraduateThesisManager.Common.Pages
 {
     using Serenity;
