@@ -807,16 +807,18 @@ var GraduateThesisManager;
                     ThesisPoolForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.DateEditor;
-                    var w2 = s.IntegerEditor;
-                    var w3 = s.MultipleImageUploadEditor;
+                    var w1 = s.TextAreaEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = s.LookupEditor;
+                    var w4 = s.MultipleImageUploadEditor;
                     Q.initFormType(ThesisPoolForm, [
                         'ThesisName', w0,
-                        'ThesisDescription', w0,
-                        'CreateDate', w1,
-                        'ExpireDate', w1,
-                        'CorseId', w2,
-                        'ThesisDocument', w3
+                        'ThesisDescription', w1,
+                        'CreateDate', w2,
+                        'ExpireDate', w2,
+                        'CorseCourseName', w0,
+                        'CorseId', w3,
+                        'ThesisDocument', w4
                     ]);
                 }
                 return _this;
