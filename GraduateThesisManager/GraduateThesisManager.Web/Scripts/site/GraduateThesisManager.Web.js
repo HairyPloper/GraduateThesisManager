@@ -326,17 +326,18 @@ var GraduateThesisManager;
                 if (!MessagesForm.init) {
                     MessagesForm.init = true;
                     var s = Serenity;
-                    var w0 = s.IntegerEditor;
-                    var w1 = s.DateEditor;
-                    var w2 = s.BooleanEditor;
-                    var w3 = s.StringEditor;
+                    var w0 = s.StringEditor;
+                    var w1 = s.IntegerEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = s.BooleanEditor;
                     var w4 = s.HtmlContentEditor;
                     Q.initFormType(MessagesForm, [
-                        'IdFrom', w0,
-                        'SendDate', w1,
-                        'IsImportant', w2,
-                        'IsChecked', w2,
-                        'Subject', w3,
+                        'IdFromUsername', w0,
+                        'IdFrom', w1,
+                        'SendDate', w2,
+                        'IsImportant', w3,
+                        'IsChecked', w3,
+                        'Subject', w0,
                         'Message', w4
                     ]);
                 }
@@ -380,6 +381,68 @@ var GraduateThesisManager;
                 };
             });
         })(MessagesService = Common.MessagesService || (Common.MessagesService = {}));
+    })(Common = GraduateThesisManager.Common || (GraduateThesisManager.Common = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Common;
+    (function (Common) {
+        var RegistrationStatusForm = /** @class */ (function (_super) {
+            __extends(RegistrationStatusForm, _super);
+            function RegistrationStatusForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!RegistrationStatusForm.init) {
+                    RegistrationStatusForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(RegistrationStatusForm, [
+                        'Status', w0
+                    ]);
+                }
+                return _this;
+            }
+            RegistrationStatusForm.formKey = 'Common.RegistrationStatus';
+            return RegistrationStatusForm;
+        }(Serenity.PrefixedContext));
+        Common.RegistrationStatusForm = RegistrationStatusForm;
+    })(Common = GraduateThesisManager.Common || (GraduateThesisManager.Common = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Common;
+    (function (Common) {
+        var RegistrationStatusRow;
+        (function (RegistrationStatusRow) {
+            RegistrationStatusRow.idProperty = 'Id';
+            RegistrationStatusRow.nameProperty = 'Status';
+            RegistrationStatusRow.localTextPrefix = 'Common.RegistrationStatus';
+            RegistrationStatusRow.lookupKey = 'Common.RegistrationStatus';
+            function getLookup() {
+                return Q.getLookup('Common.RegistrationStatus');
+            }
+            RegistrationStatusRow.getLookup = getLookup;
+        })(RegistrationStatusRow = Common.RegistrationStatusRow || (Common.RegistrationStatusRow = {}));
+    })(Common = GraduateThesisManager.Common || (GraduateThesisManager.Common = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Common;
+    (function (Common) {
+        var RegistrationStatusService;
+        (function (RegistrationStatusService) {
+            RegistrationStatusService.baseUrl = 'Common/RegistrationStatus';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                RegistrationStatusService[x] = function (r, s, o) {
+                    return Q.serviceRequest(RegistrationStatusService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(RegistrationStatusService = Common.RegistrationStatusService || (Common.RegistrationStatusService = {}));
     })(Common = GraduateThesisManager.Common || (GraduateThesisManager.Common = {}));
 })(GraduateThesisManager || (GraduateThesisManager = {}));
 var GraduateThesisManager;
@@ -542,6 +605,330 @@ var GraduateThesisManager;
         }(Serenity.PrefixedContext));
         Membership.SignUpForm = SignUpForm;
     })(Membership = GraduateThesisManager.Membership || (GraduateThesisManager.Membership = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var CoursesForm = /** @class */ (function (_super) {
+            __extends(CoursesForm, _super);
+            function CoursesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!CoursesForm.init) {
+                    CoursesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.IntegerEditor;
+                    Q.initFormType(CoursesForm, [
+                        'CourseName', w0,
+                        'CourseDescription', w0,
+                        'Lecturer', w1,
+                        'Year', w1,
+                        'Semester', w1
+                    ]);
+                }
+                return _this;
+            }
+            CoursesForm.formKey = 'ModuleCourses.Courses';
+            return CoursesForm;
+        }(Serenity.PrefixedContext));
+        ModuleCourses.CoursesForm = CoursesForm;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var CoursesRow;
+        (function (CoursesRow) {
+            CoursesRow.idProperty = 'Id';
+            CoursesRow.nameProperty = 'CourseName';
+            CoursesRow.localTextPrefix = 'ModuleCourses.Courses';
+            CoursesRow.lookupKey = 'ModuleCourses.Courses';
+            function getLookup() {
+                return Q.getLookup('ModuleCourses.Courses');
+            }
+            CoursesRow.getLookup = getLookup;
+        })(CoursesRow = ModuleCourses.CoursesRow || (ModuleCourses.CoursesRow = {}));
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var CoursesService;
+        (function (CoursesService) {
+            CoursesService.baseUrl = 'ModuleCourses/Courses';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CoursesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CoursesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CoursesService = ModuleCourses.CoursesService || (ModuleCourses.CoursesService = {}));
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesCoursesForm = /** @class */ (function (_super) {
+            __extends(ModulesCoursesForm, _super);
+            function ModulesCoursesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ModulesCoursesForm.init) {
+                    ModulesCoursesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.IntegerEditor;
+                    Q.initFormType(ModulesCoursesForm, [
+                        'ModuleId', w0,
+                        'CourseId', w0
+                    ]);
+                }
+                return _this;
+            }
+            ModulesCoursesForm.formKey = 'ModuleCourses.ModulesCourses';
+            return ModulesCoursesForm;
+        }(Serenity.PrefixedContext));
+        ModuleCourses.ModulesCoursesForm = ModulesCoursesForm;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesCoursesRow;
+        (function (ModulesCoursesRow) {
+            ModulesCoursesRow.idProperty = 'Id';
+            ModulesCoursesRow.localTextPrefix = 'ModuleCourses.ModulesCourses';
+        })(ModulesCoursesRow = ModuleCourses.ModulesCoursesRow || (ModuleCourses.ModulesCoursesRow = {}));
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesCoursesService;
+        (function (ModulesCoursesService) {
+            ModulesCoursesService.baseUrl = 'ModuleCourses/ModulesCourses';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ModulesCoursesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ModulesCoursesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ModulesCoursesService = ModuleCourses.ModulesCoursesService || (ModuleCourses.ModulesCoursesService = {}));
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesForm = /** @class */ (function (_super) {
+            __extends(ModulesForm, _super);
+            function ModulesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ModulesForm.init) {
+                    ModulesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.IntegerEditor;
+                    Q.initFormType(ModulesForm, [
+                        'Name', w0,
+                        'Description', w0,
+                        'HeadOfDepartment', w1
+                    ]);
+                }
+                return _this;
+            }
+            ModulesForm.formKey = 'ModuleCourses.Modules';
+            return ModulesForm;
+        }(Serenity.PrefixedContext));
+        ModuleCourses.ModulesForm = ModulesForm;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesRow;
+        (function (ModulesRow) {
+            ModulesRow.idProperty = 'Id';
+            ModulesRow.nameProperty = 'Name';
+            ModulesRow.localTextPrefix = 'ModuleCourses.Modules';
+            ModulesRow.lookupKey = 'ModuleCourses.Modules';
+            function getLookup() {
+                return Q.getLookup('ModuleCourses.Modules');
+            }
+            ModulesRow.getLookup = getLookup;
+        })(ModulesRow = ModuleCourses.ModulesRow || (ModuleCourses.ModulesRow = {}));
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesService;
+        (function (ModulesService) {
+            ModulesService.baseUrl = 'ModuleCourses/Modules';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ModulesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ModulesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ModulesService = ModuleCourses.ModulesService || (ModuleCourses.ModulesService = {}));
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisPoolForm = /** @class */ (function (_super) {
+            __extends(ThesisPoolForm, _super);
+            function ThesisPoolForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ThesisPoolForm.init) {
+                    ThesisPoolForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.DateEditor;
+                    var w2 = s.IntegerEditor;
+                    var w3 = s.MultipleImageUploadEditor;
+                    Q.initFormType(ThesisPoolForm, [
+                        'ThesisName', w0,
+                        'ThesisDescription', w0,
+                        'CreateDate', w1,
+                        'ExpireDate', w1,
+                        'CorseId', w2,
+                        'ThesisDocument', w3
+                    ]);
+                }
+                return _this;
+            }
+            ThesisPoolForm.formKey = 'Thesis.ThesisPool';
+            return ThesisPoolForm;
+        }(Serenity.PrefixedContext));
+        Thesis.ThesisPoolForm = ThesisPoolForm;
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisPoolRow;
+        (function (ThesisPoolRow) {
+            ThesisPoolRow.idProperty = 'Id';
+            ThesisPoolRow.nameProperty = 'ThesisName';
+            ThesisPoolRow.localTextPrefix = 'Thesis.ThesisPool';
+            ThesisPoolRow.lookupKey = 'Thesis.ThesisPool';
+            function getLookup() {
+                return Q.getLookup('Thesis.ThesisPool');
+            }
+            ThesisPoolRow.getLookup = getLookup;
+        })(ThesisPoolRow = Thesis.ThesisPoolRow || (Thesis.ThesisPoolRow = {}));
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisPoolService;
+        (function (ThesisPoolService) {
+            ThesisPoolService.baseUrl = 'Thesis/ThesisPool';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ThesisPoolService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ThesisPoolService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ThesisPoolService = Thesis.ThesisPoolService || (Thesis.ThesisPoolService = {}));
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisRegistrationForm = /** @class */ (function (_super) {
+            __extends(ThesisRegistrationForm, _super);
+            function ThesisRegistrationForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ThesisRegistrationForm.init) {
+                    ThesisRegistrationForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.DateTimeEditor;
+                    Q.initFormType(ThesisRegistrationForm, [
+                        'User', w0,
+                        'UserDisplayName', w1,
+                        'Thesis', w0,
+                        'ThesisThesisName', w1,
+                        'Status', w0,
+                        'CreateDate', w2,
+                        'ExpireDate', w2,
+                        'LecturerName', w1
+                    ]);
+                }
+                return _this;
+            }
+            ThesisRegistrationForm.formKey = 'Thesis.ThesisRegistration';
+            return ThesisRegistrationForm;
+        }(Serenity.PrefixedContext));
+        Thesis.ThesisRegistrationForm = ThesisRegistrationForm;
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisRegistrationRow;
+        (function (ThesisRegistrationRow) {
+            ThesisRegistrationRow.idProperty = 'Id';
+            ThesisRegistrationRow.localTextPrefix = 'Thesis.ThesisRegistration';
+        })(ThesisRegistrationRow = Thesis.ThesisRegistrationRow || (Thesis.ThesisRegistrationRow = {}));
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisRegistrationService;
+        (function (ThesisRegistrationService) {
+            ThesisRegistrationService.baseUrl = 'Thesis/ThesisRegistration';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ThesisRegistrationService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ThesisRegistrationService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ThesisRegistrationService = Thesis.ThesisRegistrationService || (Thesis.ThesisRegistrationService = {}));
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
 })(GraduateThesisManager || (GraduateThesisManager = {}));
 var GraduateThesisManager;
 (function (GraduateThesisManager) {
@@ -2503,6 +2890,52 @@ var GraduateThesisManager;
 (function (GraduateThesisManager) {
     var Common;
     (function (Common) {
+        var RegistrationStatusDialog = /** @class */ (function (_super) {
+            __extends(RegistrationStatusDialog, _super);
+            function RegistrationStatusDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Common.RegistrationStatusForm(_this.idPrefix);
+                return _this;
+            }
+            RegistrationStatusDialog.prototype.getFormKey = function () { return Common.RegistrationStatusForm.formKey; };
+            RegistrationStatusDialog.prototype.getIdProperty = function () { return Common.RegistrationStatusRow.idProperty; };
+            RegistrationStatusDialog.prototype.getLocalTextPrefix = function () { return Common.RegistrationStatusRow.localTextPrefix; };
+            RegistrationStatusDialog.prototype.getNameProperty = function () { return Common.RegistrationStatusRow.nameProperty; };
+            RegistrationStatusDialog.prototype.getService = function () { return Common.RegistrationStatusService.baseUrl; };
+            RegistrationStatusDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], RegistrationStatusDialog);
+            return RegistrationStatusDialog;
+        }(Serenity.EntityDialog));
+        Common.RegistrationStatusDialog = RegistrationStatusDialog;
+    })(Common = GraduateThesisManager.Common || (GraduateThesisManager.Common = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Common;
+    (function (Common) {
+        var RegistrationStatusGrid = /** @class */ (function (_super) {
+            __extends(RegistrationStatusGrid, _super);
+            function RegistrationStatusGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            RegistrationStatusGrid.prototype.getColumnsKey = function () { return 'Common.RegistrationStatus'; };
+            RegistrationStatusGrid.prototype.getDialogType = function () { return Common.RegistrationStatusDialog; };
+            RegistrationStatusGrid.prototype.getIdProperty = function () { return Common.RegistrationStatusRow.idProperty; };
+            RegistrationStatusGrid.prototype.getLocalTextPrefix = function () { return Common.RegistrationStatusRow.localTextPrefix; };
+            RegistrationStatusGrid.prototype.getService = function () { return Common.RegistrationStatusService.baseUrl; };
+            RegistrationStatusGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], RegistrationStatusGrid);
+            return RegistrationStatusGrid;
+        }(Serenity.EntityGrid));
+        Common.RegistrationStatusGrid = RegistrationStatusGrid;
+    })(Common = GraduateThesisManager.Common || (GraduateThesisManager.Common = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Common;
+    (function (Common) {
         var PdfExportHelper;
         (function (PdfExportHelper) {
             function toAutoTableColumns(srcColumns, columnStyles, columnTitles) {
@@ -2932,6 +3365,344 @@ var GraduateThesisManager;
         }());
         Common.UserPreferenceStorage = UserPreferenceStorage;
     })(Common = GraduateThesisManager.Common || (GraduateThesisManager.Common = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var CoursesDialog = /** @class */ (function (_super) {
+            __extends(CoursesDialog, _super);
+            function CoursesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new ModuleCourses.CoursesForm(_this.idPrefix);
+                return _this;
+            }
+            CoursesDialog.prototype.getFormKey = function () { return ModuleCourses.CoursesForm.formKey; };
+            CoursesDialog.prototype.getIdProperty = function () { return ModuleCourses.CoursesRow.idProperty; };
+            CoursesDialog.prototype.getLocalTextPrefix = function () { return ModuleCourses.CoursesRow.localTextPrefix; };
+            CoursesDialog.prototype.getNameProperty = function () { return ModuleCourses.CoursesRow.nameProperty; };
+            CoursesDialog.prototype.getService = function () { return ModuleCourses.CoursesService.baseUrl; };
+            CoursesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CoursesDialog);
+            return CoursesDialog;
+        }(Serenity.EntityDialog));
+        ModuleCourses.CoursesDialog = CoursesDialog;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var CoursesGrid = /** @class */ (function (_super) {
+            __extends(CoursesGrid, _super);
+            function CoursesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            CoursesGrid.prototype.getColumnsKey = function () { return 'ModuleCourses.Courses'; };
+            CoursesGrid.prototype.getDialogType = function () { return ModuleCourses.CoursesDialog; };
+            CoursesGrid.prototype.getIdProperty = function () { return ModuleCourses.CoursesRow.idProperty; };
+            CoursesGrid.prototype.getLocalTextPrefix = function () { return ModuleCourses.CoursesRow.localTextPrefix; };
+            CoursesGrid.prototype.getService = function () { return ModuleCourses.CoursesService.baseUrl; };
+            CoursesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CoursesGrid);
+            return CoursesGrid;
+        }(Serenity.EntityGrid));
+        ModuleCourses.CoursesGrid = CoursesGrid;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesDialog = /** @class */ (function (_super) {
+            __extends(ModulesDialog, _super);
+            function ModulesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new ModuleCourses.ModulesForm(_this.idPrefix);
+                return _this;
+            }
+            ModulesDialog.prototype.getFormKey = function () { return ModuleCourses.ModulesForm.formKey; };
+            ModulesDialog.prototype.getIdProperty = function () { return ModuleCourses.ModulesRow.idProperty; };
+            ModulesDialog.prototype.getLocalTextPrefix = function () { return ModuleCourses.ModulesRow.localTextPrefix; };
+            ModulesDialog.prototype.getNameProperty = function () { return ModuleCourses.ModulesRow.nameProperty; };
+            ModulesDialog.prototype.getService = function () { return ModuleCourses.ModulesService.baseUrl; };
+            ModulesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ModulesDialog);
+            return ModulesDialog;
+        }(Serenity.EntityDialog));
+        ModuleCourses.ModulesDialog = ModulesDialog;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesGrid = /** @class */ (function (_super) {
+            __extends(ModulesGrid, _super);
+            function ModulesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ModulesGrid.prototype.getColumnsKey = function () { return 'ModuleCourses.Modules'; };
+            ModulesGrid.prototype.getDialogType = function () { return ModuleCourses.ModulesDialog; };
+            ModulesGrid.prototype.getIdProperty = function () { return ModuleCourses.ModulesRow.idProperty; };
+            ModulesGrid.prototype.getLocalTextPrefix = function () { return ModuleCourses.ModulesRow.localTextPrefix; };
+            ModulesGrid.prototype.getService = function () { return ModuleCourses.ModulesService.baseUrl; };
+            ModulesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ModulesGrid);
+            return ModulesGrid;
+        }(Serenity.EntityGrid));
+        ModuleCourses.ModulesGrid = ModulesGrid;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesCoursesDialog = /** @class */ (function (_super) {
+            __extends(ModulesCoursesDialog, _super);
+            function ModulesCoursesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new ModuleCourses.ModulesCoursesForm(_this.idPrefix);
+                return _this;
+            }
+            ModulesCoursesDialog.prototype.getFormKey = function () { return ModuleCourses.ModulesCoursesForm.formKey; };
+            ModulesCoursesDialog.prototype.getIdProperty = function () { return ModuleCourses.ModulesCoursesRow.idProperty; };
+            ModulesCoursesDialog.prototype.getLocalTextPrefix = function () { return ModuleCourses.ModulesCoursesRow.localTextPrefix; };
+            ModulesCoursesDialog.prototype.getService = function () { return ModuleCourses.ModulesCoursesService.baseUrl; };
+            ModulesCoursesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ModulesCoursesDialog);
+            return ModulesCoursesDialog;
+        }(Serenity.EntityDialog));
+        ModuleCourses.ModulesCoursesDialog = ModulesCoursesDialog;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var ModuleCourses;
+    (function (ModuleCourses) {
+        var ModulesCoursesGrid = /** @class */ (function (_super) {
+            __extends(ModulesCoursesGrid, _super);
+            function ModulesCoursesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ModulesCoursesGrid.prototype.getColumnsKey = function () { return 'ModuleCourses.ModulesCourses'; };
+            ModulesCoursesGrid.prototype.getDialogType = function () { return ModuleCourses.ModulesCoursesDialog; };
+            ModulesCoursesGrid.prototype.getIdProperty = function () { return ModuleCourses.ModulesCoursesRow.idProperty; };
+            ModulesCoursesGrid.prototype.getLocalTextPrefix = function () { return ModuleCourses.ModulesCoursesRow.localTextPrefix; };
+            ModulesCoursesGrid.prototype.getService = function () { return ModuleCourses.ModulesCoursesService.baseUrl; };
+            ModulesCoursesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ModulesCoursesGrid);
+            return ModulesCoursesGrid;
+        }(Serenity.EntityGrid));
+        ModuleCourses.ModulesCoursesGrid = ModulesCoursesGrid;
+    })(ModuleCourses = GraduateThesisManager.ModuleCourses || (GraduateThesisManager.ModuleCourses = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisPoolDialog = /** @class */ (function (_super) {
+            __extends(ThesisPoolDialog, _super);
+            function ThesisPoolDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Thesis.ThesisPoolForm(_this.idPrefix);
+                return _this;
+            }
+            ThesisPoolDialog.prototype.getFormKey = function () { return Thesis.ThesisPoolForm.formKey; };
+            ThesisPoolDialog.prototype.getIdProperty = function () { return Thesis.ThesisPoolRow.idProperty; };
+            ThesisPoolDialog.prototype.getLocalTextPrefix = function () { return Thesis.ThesisPoolRow.localTextPrefix; };
+            ThesisPoolDialog.prototype.getNameProperty = function () { return Thesis.ThesisPoolRow.nameProperty; };
+            ThesisPoolDialog.prototype.getService = function () { return Thesis.ThesisPoolService.baseUrl; };
+            ThesisPoolDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ThesisPoolDialog);
+            return ThesisPoolDialog;
+        }(Serenity.EntityDialog));
+        Thesis.ThesisPoolDialog = ThesisPoolDialog;
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisPoolGrid = /** @class */ (function (_super) {
+            __extends(ThesisPoolGrid, _super);
+            function ThesisPoolGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ThesisPoolGrid.prototype.getColumnsKey = function () { return 'Thesis.ThesisPool'; };
+            ThesisPoolGrid.prototype.getDialogType = function () { return Thesis.ThesisPoolDialog; };
+            ThesisPoolGrid.prototype.getIdProperty = function () { return Thesis.ThesisPoolRow.idProperty; };
+            ThesisPoolGrid.prototype.getLocalTextPrefix = function () { return Thesis.ThesisPoolRow.localTextPrefix; };
+            ThesisPoolGrid.prototype.getService = function () { return Thesis.ThesisPoolService.baseUrl; };
+            ThesisPoolGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                //Insert button for Excel export 
+                buttons.push(GraduateThesisManager.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Thesis.ThesisPoolService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                //Insert button for Pdf export 
+                buttons.push(GraduateThesisManager.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    reportTitle: 'Thesis List',
+                    pageNumbers: true,
+                    columnTitles: {
+                        'Discontinued': 'Dis.',
+                    },
+                    tableOptions: {
+                        columnStyles: {
+                            LanguageId: {
+                                columnWidth: 25,
+                                halign: 'right'
+                            },
+                            Discountinued: {
+                                columnWidth: 25
+                            }
+                        }
+                    }
+                }));
+                return buttons;
+            };
+            ThesisPoolGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ThesisPoolGrid);
+            return ThesisPoolGrid;
+        }(Serenity.EntityGrid));
+        Thesis.ThesisPoolGrid = ThesisPoolGrid;
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisRegistrationDialog = /** @class */ (function (_super) {
+            __extends(ThesisRegistrationDialog, _super);
+            function ThesisRegistrationDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Thesis.ThesisRegistrationForm(_this.idPrefix);
+                return _this;
+            }
+            ThesisRegistrationDialog.prototype.getFormKey = function () { return Thesis.ThesisRegistrationForm.formKey; };
+            ThesisRegistrationDialog.prototype.getIdProperty = function () { return Thesis.ThesisRegistrationRow.idProperty; };
+            ThesisRegistrationDialog.prototype.getLocalTextPrefix = function () { return Thesis.ThesisRegistrationRow.localTextPrefix; };
+            ThesisRegistrationDialog.prototype.getService = function () { return Thesis.ThesisRegistrationService.baseUrl; };
+            ThesisRegistrationDialog.prototype.getToolbarButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getToolbarButtons.call(this);
+                buttons.push(GraduateThesisManager.Common.ReportHelper.createToolButton({
+                    title: 'Generate Report',
+                    cssClass: 'export-pdf-button',
+                    download: false,
+                    reportKey: 'Thesis.ThesisRegistration',
+                    getParams: function () { return ({
+                        ThesisRegistrationId: _this.get_entityId()
+                    }); }
+                }));
+                return buttons;
+            };
+            ThesisRegistrationDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ThesisRegistrationDialog);
+            return ThesisRegistrationDialog;
+        }(Serenity.EntityDialog));
+        Thesis.ThesisRegistrationDialog = ThesisRegistrationDialog;
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
+})(GraduateThesisManager || (GraduateThesisManager = {}));
+var GraduateThesisManager;
+(function (GraduateThesisManager) {
+    var Thesis;
+    (function (Thesis) {
+        var ThesisRegistrationGrid = /** @class */ (function (_super) {
+            __extends(ThesisRegistrationGrid, _super);
+            function ThesisRegistrationGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ThesisRegistrationGrid.prototype.getColumnsKey = function () { return 'Thesis.ThesisRegistration'; };
+            ThesisRegistrationGrid.prototype.getDialogType = function () { return Thesis.ThesisRegistrationDialog; };
+            ThesisRegistrationGrid.prototype.getIdProperty = function () { return Thesis.ThesisRegistrationRow.idProperty; };
+            ThesisRegistrationGrid.prototype.getLocalTextPrefix = function () { return Thesis.ThesisRegistrationRow.localTextPrefix; };
+            ThesisRegistrationGrid.prototype.getService = function () { return Thesis.ThesisRegistrationService.baseUrl; };
+            ThesisRegistrationGrid.prototype.getQuickSearchFields = function () {
+                return [
+                    { name: "UserUsername", title: "Username" },
+                    { name: "ThesisThesisName", title: "Thesis Name" },
+                    { name: "LecturerName", title: "Lecturer Name" }
+                ];
+            };
+            ThesisRegistrationGrid.prototype.getColumns = function () {
+                var columns = _super.prototype.getColumns.call(this);
+                Q.first(columns, function (x) { return x.field == "Status1"; }).cssClass += " step-status-col";
+                return columns;
+            };
+            ThesisRegistrationGrid.prototype.createSlickGrid = function () {
+                var grid = _super.prototype.createSlickGrid.call(this);
+                return grid;
+            };
+            ThesisRegistrationGrid.prototype.getItemCssClass = function (item, index) {
+                var klass = "";
+                if (item.Status1.toUpperCase() == "IN PROGRESS") {
+                    klass += " color-progress";
+                }
+                else if (item.Status1.toUpperCase() == "SUCCESSFUL") {
+                    klass += " color-success";
+                }
+                else {
+                    klass += " color-danger";
+                }
+                return Q.trimToNull(klass);
+            };
+            ThesisRegistrationGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.splice(Q.indexOf(buttons, function (x) { return x.cssClass == "add-button"; }), 1);
+                //Insert button for Excel export 
+                buttons.push(GraduateThesisManager.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: Thesis.ThesisRegistrationService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                //Insert button for Pdf export 
+                buttons.push(GraduateThesisManager.Common.PdfExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    reportTitle: 'Registration List',
+                    pageNumbers: true,
+                    columnTitles: {
+                        'Discontinued': 'Dis.',
+                    },
+                    tableOptions: {
+                        columnStyles: {
+                            LanguageId: {
+                                columnWidth: 25,
+                                halign: 'right'
+                            },
+                            Discountinued: {
+                                columnWidth: 25
+                            }
+                        }
+                    }
+                }));
+                return buttons;
+            };
+            ThesisRegistrationGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ThesisRegistrationGrid);
+            return ThesisRegistrationGrid;
+        }(Serenity.EntityGrid));
+        Thesis.ThesisRegistrationGrid = ThesisRegistrationGrid;
+    })(Thesis = GraduateThesisManager.Thesis || (GraduateThesisManager.Thesis = {}));
 })(GraduateThesisManager || (GraduateThesisManager = {}));
 var GraduateThesisManager;
 (function (GraduateThesisManager) {

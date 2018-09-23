@@ -5,6 +5,8 @@
 @import "site.membership.less";
 @import "site.northwind.less";
 @import "site.common.less";
+@import "site.modulecourses.less";
+@import "site.thesis.less";
 
 .s-Common-MessagesGrid {
     .notChecked-type .col-checked-type {
@@ -38,5 +40,22 @@
     height: 656px;
     .grid-container{
         height:415px;
+    }
+}
+
+.s-Thesis-ThesisRegistrationGrid {
+    .color-success .step-status-col {
+        color: darkgreen;
+        font-weight: bold;
+    }
+
+    .color-danger .step-status-col {
+        color: darkred;
+        font-weight: bold;
+    }
+
+    .color-progress .step-status-col {
+        color: darkgoldenrod;
+        font-weight: bold;
     }
 }

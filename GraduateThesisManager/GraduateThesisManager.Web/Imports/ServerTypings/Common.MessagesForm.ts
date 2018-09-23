@@ -1,5 +1,6 @@
 ﻿namespace GraduateThesisManager.Common {
     export interface MessagesForm {
+        IdFromUsername: Serenity.StringEditor;
         IdFrom: Serenity.IntegerEditor;
         SendDate: Serenity.DateEditor;
         IsImportant: Serenity.BooleanEditor;
@@ -19,18 +20,19 @@
                 MessagesForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.IntegerEditor;
-                var w1 = s.DateEditor;
-                var w2 = s.BooleanEditor;
-                var w3 = s.StringEditor;
+                var w0 = s.StringEditor;
+                var w1 = s.IntegerEditor;
+                var w2 = s.DateEditor;
+                var w3 = s.BooleanEditor;
                 var w4 = s.HtmlContentEditor;
 
                 Q.initFormType(MessagesForm, [
-                    'IdFrom', w0,
-                    'SendDate', w1,
-                    'IsImportant', w2,
-                    'IsChecked', w2,
-                    'Subject', w3,
+                    'IdFromUsername', w0,
+                    'IdFrom', w1,
+                    'SendDate', w2,
+                    'IsImportant', w3,
+                    'IsChecked', w3,
+                    'Subject', w0,
                     'Message', w4
                 ]);
             }

@@ -8048,6 +8048,42 @@ section.content > .s-DataGrid {
 .s-Common-MessagesDialog .caption {
   width: 150px;
 }
+.s-Common-RegistrationStatusDialog > .size {
+  width: 650px;
+}
+.s-Common-RegistrationStatusDialog .caption {
+  width: 150px;
+}
+.s-ModuleCourses-CoursesDialog > .size {
+  width: 650px;
+}
+.s-ModuleCourses-CoursesDialog .caption {
+  width: 150px;
+}
+.s-ModuleCourses-ModulesDialog > .size {
+  width: 650px;
+}
+.s-ModuleCourses-ModulesDialog .caption {
+  width: 150px;
+}
+.s-ModuleCourses-ModulesCoursesDialog > .size {
+  width: 650px;
+}
+.s-ModuleCourses-ModulesCoursesDialog .caption {
+  width: 150px;
+}
+.s-Thesis-ThesisPoolDialog > .size {
+  width: 650px;
+}
+.s-Thesis-ThesisPoolDialog .caption {
+  width: 150px;
+}
+.s-Thesis-ThesisRegistrationDialog > .size {
+  width: 650px;
+}
+.s-Thesis-ThesisRegistrationDialog .caption {
+  width: 150px;
+}
 .s-Common-MessagesGrid {
   height: 656px;
 }
@@ -8077,4 +8113,16 @@ section.content > .s-DataGrid {
 }
 .s-Common-MessagesGrid .grid-container {
   height: 415px;
+}
+.s-Thesis-ThesisRegistrationGrid .color-success .step-status-col {
+  color: darkgreen;
+  font-weight: bold;
+}
+.s-Thesis-ThesisRegistrationGrid .color-danger .step-status-col {
+  color: darkred;
+  font-weight: bold;
+}
+.s-Thesis-ThesisRegistrationGrid .color-progress .step-status-col {
+  color: darkgoldenrod;
+  font-weight: bold;
 }

@@ -820,6 +820,7 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationReport.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -977,6 +978,24 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Common.MessagesResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.RegistrationStatusColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.CoursesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesCoursesColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisPoolColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisRegistrationColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Messages\MessagesBulkAction.ts" />
@@ -1587,6 +1606,80 @@
     <Content Include="Modules\Common\Messages\MessagesIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Common\Messages\MessagesDialog.ts" />
     <TypeScriptCompile Include="Modules\Common\Messages\MessagesGrid.ts" />
+    <Content Include="Content\site\site.modulecourses.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.RegistrationStatusRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.RegistrationStatusService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Common\RegistrationStatus\RegistrationStatusIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Common\RegistrationStatus\RegistrationStatusDialog.ts" />
+    <TypeScriptCompile Include="Modules\Common\RegistrationStatus\RegistrationStatusGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Common.RegistrationStatusForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Content\site\site.thesis.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.CoursesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.CoursesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\ModuleCourses\Courses\CoursesIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\ModuleCourses\Courses\CoursesDialog.ts" />
+    <TypeScriptCompile Include="Modules\ModuleCourses\Courses\CoursesGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.CoursesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\ModuleCourses\Modules\ModulesIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\ModuleCourses\Modules\ModulesDialog.ts" />
+    <TypeScriptCompile Include="Modules\ModuleCourses\Modules\ModulesGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesCoursesRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesCoursesService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesDialog.ts" />
+    <TypeScriptCompile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesCoursesForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisPoolRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisPoolService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Thesis\ThesisPool\ThesisPoolIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Thesis\ThesisPool\ThesisPoolDialog.ts" />
+    <TypeScriptCompile Include="Modules\Thesis\ThesisPool\ThesisPoolGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisPoolForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisRegistrationRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisRegistrationService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationDialog.ts" />
+    <TypeScriptCompile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisRegistrationForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1683,6 +1776,7 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
+    <Compile Include="Modules\ModuleCourses\ModuleCoursesPermissionKeys.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
@@ -1692,6 +1786,8 @@
     <Compile Include="Modules\Administration\User\Authentication\AuthenticationService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\UserRetrieveService.cs" />
     <Compile Include="Modules\Membership\Account\LoginRequest.cs" />
+    <Compile Include="Modules\Thesis\ThesisPermissionKeys.cs" />
+    <Compile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\Administration\User\UserRow.cs" />
     <Compile Include="Modules\Administration\User\UserForm.cs" />
@@ -1727,6 +1823,42 @@
     <Compile Include="Modules\Common\Messages\MessagesPage.cs" />
     <Compile Include="Modules\Common\Messages\MessagesColumns.cs" />
     <Compile Include="Modules\Common\Messages\MessagesForm.cs" />
+    <Compile Include="Modules\Common\RegistrationStatus\RegistrationStatusRow.cs" />
+    <Compile Include="Modules\Common\RegistrationStatus\RegistrationStatusRepository.cs" />
+    <Compile Include="Modules\Common\RegistrationStatus\RegistrationStatusEndpoint.cs" />
+    <Compile Include="Modules\Common\RegistrationStatus\RegistrationStatusPage.cs" />
+    <Compile Include="Modules\Common\RegistrationStatus\RegistrationStatusColumns.cs" />
+    <Compile Include="Modules\Common\RegistrationStatus\RegistrationStatusForm.cs" />
+    <Compile Include="Modules\ModuleCourses\Courses\CoursesRow.cs" />
+    <Compile Include="Modules\ModuleCourses\Courses\CoursesRepository.cs" />
+    <Compile Include="Modules\ModuleCourses\Courses\CoursesEndpoint.cs" />
+    <Compile Include="Modules\ModuleCourses\Courses\CoursesPage.cs" />
+    <Compile Include="Modules\ModuleCourses\Courses\CoursesColumns.cs" />
+    <Compile Include="Modules\ModuleCourses\Courses\CoursesForm.cs" />
+    <Compile Include="Modules\ModuleCourses\Modules\ModulesRow.cs" />
+    <Compile Include="Modules\ModuleCourses\Modules\ModulesRepository.cs" />
+    <Compile Include="Modules\ModuleCourses\Modules\ModulesEndpoint.cs" />
+    <Compile Include="Modules\ModuleCourses\Modules\ModulesPage.cs" />
+    <Compile Include="Modules\ModuleCourses\Modules\ModulesColumns.cs" />
+    <Compile Include="Modules\ModuleCourses\Modules\ModulesForm.cs" />
+    <Compile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesRow.cs" />
+    <Compile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesRepository.cs" />
+    <Compile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesEndpoint.cs" />
+    <Compile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesPage.cs" />
+    <Compile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesColumns.cs" />
+    <Compile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesForm.cs" />
+    <Compile Include="Modules\Thesis\ThesisPool\ThesisPoolRow.cs" />
+    <Compile Include="Modules\Thesis\ThesisPool\ThesisPoolRepository.cs" />
+    <Compile Include="Modules\Thesis\ThesisPool\ThesisPoolEndpoint.cs" />
+    <Compile Include="Modules\Thesis\ThesisPool\ThesisPoolPage.cs" />
+    <Compile Include="Modules\Thesis\ThesisPool\ThesisPoolColumns.cs" />
+    <Compile Include="Modules\Thesis\ThesisPool\ThesisPoolForm.cs" />
+    <Compile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationRow.cs" />
+    <Compile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationRepository.cs" />
+    <Compile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationEndpoint.cs" />
+    <Compile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationPage.cs" />
+    <Compile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationColumns.cs" />
+    <Compile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

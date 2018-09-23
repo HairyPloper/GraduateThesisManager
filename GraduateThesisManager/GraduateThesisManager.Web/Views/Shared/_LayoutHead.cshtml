@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Globalization
+
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -11,7 +12,7 @@
 {
     @Html.Stylesheet("~/Content/site/site.rtl.css")
 }
-<script type="application/json" id="ScriptCulture">@Html.Raw(Serenity.JSON.Stringify(new ScriptCulture()))</script>
+<script type="application/json" id="ScriptCulture">@Html.Raw(Serenity.JSON.Stringify(new ScriptCulture(new CultureInfo("en-GB"))))</script>
 <script type="text/javascript">window.paceOptions = { startOnPageLoad: false, ajax: { trackMethods: ['GET', 'POST'], trackWebSockets: false, ignoreURLs: [] } };</script>
 @Html.ScriptBundle("Base")
 @Html.ScriptBundle("Site")
