@@ -14,6 +14,7 @@ namespace GraduateThesisManager.Thesis.Repositories
 
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
+            request.Entity.ExpireDate = request.Entity.CreateDate.Value.AddMonths(6);
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 

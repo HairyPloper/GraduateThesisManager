@@ -9,10 +9,10 @@ namespace GraduateThesisManager.Thesis {
         protected getService() { return ThesisRegistrationService.baseUrl; }
 
         protected form = new ThesisRegistrationForm(this.idPrefix);
+        public registerEntry: ThesisPoolRow = null;
 
         protected getToolbarButtons() {
             var buttons = super.getToolbarButtons();
-
             buttons.push(Common.ReportHelper.createToolButton({
                 title: 'Generate Report',
                 cssClass: 'export-pdf-button',
@@ -24,7 +24,6 @@ namespace GraduateThesisManager.Thesis {
             }));
             return buttons;
         }
-
 
     }
 }

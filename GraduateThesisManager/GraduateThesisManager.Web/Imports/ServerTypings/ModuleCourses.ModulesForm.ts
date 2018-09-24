@@ -1,8 +1,9 @@
 ﻿namespace GraduateThesisManager.ModuleCourses {
     export interface ModulesForm {
         Name: Serenity.StringEditor;
-        Description: Serenity.StringEditor;
-        HeadOfDepartment: Serenity.IntegerEditor;
+        Description: Serenity.TextAreaEditor;
+        HeadOfDepartmentDisplayName: Serenity.StringEditor;
+        CoursesList: ModulesCoursesEditor;
     }
 
     export class ModulesForm extends Serenity.PrefixedContext {
@@ -17,12 +18,14 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.IntegerEditor;
+                var w1 = s.TextAreaEditor;
+                var w2 = ModulesCoursesEditor;
 
                 Q.initFormType(ModulesForm, [
                     'Name', w0,
-                    'Description', w0,
-                    'HeadOfDepartment', w1
+                    'Description', w1,
+                    'HeadOfDepartmentDisplayName', w0,
+                    'CoursesList', w2
                 ]);
             }
         }

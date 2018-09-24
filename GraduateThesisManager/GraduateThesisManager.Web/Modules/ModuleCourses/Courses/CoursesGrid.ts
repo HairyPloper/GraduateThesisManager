@@ -12,5 +12,43 @@ namespace GraduateThesisManager.ModuleCourses {
         constructor(container: JQuery) {
             super(container);
         }
+        protected getButtons() {
+            var buttons = super.getButtons();
+
+            buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
+
+            //Insert button for Excel export 
+            buttons.push(Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                service: CoursesService.baseUrl + '/ListExcel',
+                onViewSubmit: () => this.onViewSubmit(),
+                separator: true
+            }));
+
+            //Insert button for Pdf export 
+            buttons.push(Common.PdfExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit(),
+                reportTitle: 'Courses List',
+                pageNumbers: true,
+                columnTitles: {
+                    'Discontinued': 'Dis.',
+                },
+                tableOptions: {
+                    columnStyles: {
+                        LanguageId: {
+                            columnWidth: 25,
+                            halign: 'right'
+                        },
+                        Discountinued: {
+                            columnWidth: 25
+                        }
+                    }
+                }
+            }));
+
+
+            return buttons;
+        }
     }
 }

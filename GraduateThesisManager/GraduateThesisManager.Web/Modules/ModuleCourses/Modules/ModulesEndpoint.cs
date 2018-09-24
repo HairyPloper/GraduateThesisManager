@@ -1,4 +1,8 @@
 ﻿
+using System;
+using Serenity.Reporting;
+using Serenity.Web;
+
 namespace GraduateThesisManager.ModuleCourses.Endpoints
 {
     using Serenity;
@@ -24,7 +28,7 @@ namespace GraduateThesisManager.ModuleCourses.Endpoints
         {
             return new MyRepository().Update(uow, request);
         }
- 
+
         [HttpPost, AuthorizeDelete(typeof(MyRow))]
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
         {
@@ -41,6 +45,21 @@ namespace GraduateThesisManager.ModuleCourses.Endpoints
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
+        }
+        /// <summary>
+        /// Lists the excel.
+        /// </summary>
+        /// <param name="connection">The connection.</param>
+        /// <param name="request">The request.</param>
+        /// <returns>Excel file</returns>
+        public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
+        {
+            var data = List(connection, request).Entities;
+            var report = new DynamicDataReport(data, request.IncludeColumns,
+                typeof(GraduateThesisManager.ModuleCourses.Columns.ModulesColumns));
+            var bytes = new ReportRepository().Render(report);
+            return ExcelContentResult.Create(bytes, "ModulesList_" +
+                                                    DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
     }
 }

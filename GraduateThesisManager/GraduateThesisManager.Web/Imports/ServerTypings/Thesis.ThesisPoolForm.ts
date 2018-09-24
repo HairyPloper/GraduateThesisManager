@@ -4,7 +4,6 @@
         ThesisDescription: Serenity.TextAreaEditor;
         CreateDate: Serenity.DateEditor;
         ExpireDate: Serenity.DateEditor;
-        CorseCourseName: Serenity.StringEditor;
         CorseId: Serenity.LookupEditor;
         ThesisDocument: Serenity.MultipleImageUploadEditor;
     }
@@ -31,7 +30,6 @@
                     'ThesisDescription', w1,
                     'CreateDate', w2,
                     'ExpireDate', w2,
-                    'CorseCourseName', w0,
                     'CorseId', w3,
                     'ThesisDocument', w4
                 ]);

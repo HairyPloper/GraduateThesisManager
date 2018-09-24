@@ -12,6 +12,7 @@
         CorseLecturer?: number;
         CorseYear?: number;
         CorseSemester?: number;
+        CorseLecturerName?: string;
     }
 
     export namespace ThesisPoolRow {
@@ -36,7 +37,8 @@
             CorseCourseDescription = "CorseCourseDescription",
             CorseLecturer = "CorseLecturer",
             CorseYear = "CorseYear",
-            CorseSemester = "CorseSemester"
+            CorseSemester = "CorseSemester",
+            CorseLecturerName = "CorseLecturerName"
         }
     }
 }

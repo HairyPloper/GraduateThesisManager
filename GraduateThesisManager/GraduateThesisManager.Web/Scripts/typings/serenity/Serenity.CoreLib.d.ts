@@ -789,6 +789,7 @@ declare namespace Serenity {
         Username?: string;
         DisplayName?: string;
         IsAdmin?: boolean;
+        UserId?: number;
         Permissions?: {
             [key: string]: boolean;
         };

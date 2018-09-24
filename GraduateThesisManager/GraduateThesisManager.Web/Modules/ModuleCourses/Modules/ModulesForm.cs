@@ -13,8 +13,21 @@ namespace GraduateThesisManager.ModuleCourses.Forms
     [BasedOnRow(typeof(Entities.ModulesRow), CheckNames = true)]
     public class ModulesForm
     {
+
+        [Tab("Module info")]
+        [Category("Module ")]
+        [EditLink]
+        [DisplayName("Name")]
         public String Name { get; set; }
+        [DisplayName("Description")]
         public String Description { get; set; }
-        public Int32 HeadOfDepartment { get; set; }
+        [DisplayName("Head of Department")]
+        public String HeadOfDepartmentDisplayName { get; set; }
+
+        [Tab("Courses")]
+        [Category("Courses")]
+        [ModulesCoursesEditor]
+        [DisplayName("Courses")]
+        public List<Entities.ModulesCoursesRow> CoursesList { get; set; }
     }
 }

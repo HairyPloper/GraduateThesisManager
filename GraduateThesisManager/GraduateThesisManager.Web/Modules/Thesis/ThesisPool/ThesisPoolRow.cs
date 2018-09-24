@@ -85,11 +85,17 @@ namespace GraduateThesisManager.Thesis.Entities
             set { Fields.CorseCourseDescription[this] = value; }
         }
 
-        [DisplayName("Corse Lecturer"), Expression("jCorse.[Lecturer]")]
+        [DisplayName("Corse Lecturer"), Expression("jCorse.[Lecturer]"), ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUser")]
         public Int32? CorseLecturer
         {
             get { return Fields.CorseLecturer[this]; }
             set { Fields.CorseLecturer[this] = value; }
+        }
+        [DisplayName("Lecturer"), Expression("jUser.[DisplayName]")]
+        public String CorseLecturerName 
+        {
+            get { return Fields.CorseLecturerName[this]; }
+            set { Fields.CorseLecturerName[this] = value; }
         }
 
         [DisplayName("Corse Year"), Expression("jCorse.[Year]")]
@@ -138,6 +144,7 @@ namespace GraduateThesisManager.Thesis.Entities
             public Int32Field CorseLecturer;
             public Int16Field CorseYear;
             public Int16Field CorseSemester;
+            public StringField CorseLecturerName;
         }
     }
 }

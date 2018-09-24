@@ -4,6 +4,7 @@
         DisplayName?: string;
         IsAdmin?: boolean;
         Permissions?: { [key: string]: boolean };
+        UserId?: number;
     }
 }
 

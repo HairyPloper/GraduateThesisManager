@@ -18,7 +18,6 @@ namespace GraduateThesisManager.Thesis.Forms
         public String ThesisDescription { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ExpireDate { get; set; }
-        public String CorseCourseName { get; set; }
         [QuickFilter()]
         public Int32 CorseId{ get; set; }
         public String ThesisDocument { get; set; }

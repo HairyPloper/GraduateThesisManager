@@ -32,7 +32,7 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             set { Fields.CourseName[this] = value; }
         }
 
-        [DisplayName("Course Description"), Size(50), NotNull]
+        [DisplayName("Course Description"), Size(50), NotNull, LookupInclude, TextAreaEditor(Cols = 1, Rows = 10)]
         public String CourseDescription
         {
             get { return Fields.CourseDescription[this]; }
@@ -46,14 +46,14 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             set { Fields.Lecturer[this] = value; }
         }
 
-        [DisplayName("Year"), NotNull]
+        [DisplayName("Year"), NotNull,LookupInclude]
         public Int16? Year
         {
             get { return Fields.Year[this]; }
             set { Fields.Year[this] = value; }
         }
 
-        [DisplayName("Semester"), NotNull]
+        [DisplayName("Semester"), NotNull, LookupInclude]
         public Int16? Semester
         {
             get { return Fields.Semester[this]; }

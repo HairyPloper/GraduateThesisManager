@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace GraduateThesisManager.ModuleCourses.Entities
 {
     using Serenity;
@@ -32,7 +34,7 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Description"), Size(50), NotNull]
+        [DisplayName("Description"), Size(50), NotNull,TextAreaEditor(Cols = 1,Rows = 10)]
         public String Description
         {
             get { return Fields.Description[this]; }
@@ -136,6 +138,11 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             get { return Fields.HeadOfDepartmentIsActive[this]; }
             set { Fields.HeadOfDepartmentIsActive[this] = value; }
         }
+        public List<ModulesCoursesRow> CoursesList
+        {
+            get { return Fields.CoursesList[this]; }
+            set { Fields.CoursesList[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -174,6 +181,8 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             public DateTimeField HeadOfDepartmentUpdateDate;
             public Int32Field HeadOfDepartmentUpdateUserId;
             public Int16Field HeadOfDepartmentIsActive;
+
+            public ListField<ModulesCoursesRow> CoursesList;
         }
     }
 }

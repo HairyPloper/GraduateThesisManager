@@ -21,6 +21,6 @@ namespace GraduateThesisManager.Thesis.Columns
         public DateTime CreateDate { get; set; }
         public DateTime ExpireDate { get; set; }
         public String CorseCourseName { get; set; }
-        public  StringField CorseLecturer { get; set; }
+        public  String CorseLecturerName { get; set; }
     }
 }

@@ -11,5 +11,22 @@ namespace GraduateThesisManager.Thesis {
 
         protected form = new ThesisPoolForm(this.idPrefix);
 
+        protected getToolbarButtons() {
+            var buttons = super.getToolbarButtons();
+            var registerThesis: Serenity.ToolButton =
+            {
+                title: "Register Thesis",
+                cssClass: "mail-button",
+                onClick: () => {
+                    var dialog = new RegistrationDialog();
+                    dialog.registerEntry = this.entity;
+                    dialog.loadNewAndOpenDialog(false);                  
+                }
+            }
+            buttons.push(registerThesis);
+
+            return buttons;
+        }
+
     }
 }

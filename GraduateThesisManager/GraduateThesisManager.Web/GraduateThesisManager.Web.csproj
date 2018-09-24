@@ -992,13 +992,21 @@
     <TypeScriptCompile Include="Imports\ServerTypings\ModuleCourses.ModulesCoursesColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Thesis.RegistrationForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisPoolColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Thesis.ThesisRegistrationColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Modules\Common\Helpers\YearDropdown.ts" />
+    <TypeScriptCompile Include="Modules\Common\Helpers\SemesterDropdown.ts" />
     <TypeScriptCompile Include="Modules\Common\Messages\MessagesBulkAction.ts" />
+    <TypeScriptCompile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesEditDialog.ts" />
+    <TypeScriptCompile Include="Modules\ModuleCourses\ModulesCourses\ModulesCoursesEditor.ts" />
+    <TypeScriptCompile Include="Modules\Thesis\ThesisRegistration\RegistrationDialog.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery.blockui\index.d.ts" />
@@ -1700,6 +1708,15 @@
     <Compile Include="Imports\ClientTypes\Common.MessageHelperEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\Common.SemesterEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Common.YearEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\ModuleCourses.ModulesCoursesEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionListResponse.cs" />
@@ -1776,6 +1793,7 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
+    <Compile Include="Modules\ModuleCourses\Courses\ProfesorsLookUp.cs" />
     <Compile Include="Modules\ModuleCourses\ModuleCoursesPermissionKeys.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
@@ -1787,6 +1805,7 @@
     <Compile Include="Modules\Administration\User\Authentication\UserRetrieveService.cs" />
     <Compile Include="Modules\Membership\Account\LoginRequest.cs" />
     <Compile Include="Modules\Thesis\ThesisPermissionKeys.cs" />
+    <Compile Include="Modules\Thesis\ThesisRegistration\RegistrationFrom.cs" />
     <Compile Include="Modules\Thesis\ThesisRegistration\ThesisRegistrationReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\Administration\User\UserRow.cs" />

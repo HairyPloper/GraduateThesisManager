@@ -17,6 +17,7 @@
         HeadOfDepartmentUpdateDate?: string;
         HeadOfDepartmentUpdateUserId?: number;
         HeadOfDepartmentIsActive?: number;
+        CoursesList?: ModulesCoursesRow[];
     }
 
     export namespace ModulesRow {
@@ -46,7 +47,8 @@
             HeadOfDepartmentInsertUserId = "HeadOfDepartmentInsertUserId",
             HeadOfDepartmentUpdateDate = "HeadOfDepartmentUpdateDate",
             HeadOfDepartmentUpdateUserId = "HeadOfDepartmentUpdateUserId",
-            HeadOfDepartmentIsActive = "HeadOfDepartmentIsActive"
+            HeadOfDepartmentIsActive = "HeadOfDepartmentIsActive",
+            CoursesList = "CoursesList"
         }
     }
 }

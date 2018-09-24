@@ -29,7 +29,6 @@ namespace GraduateThesisManager.Thesis.Entities
         }
 
         [DisplayName("User"), NotNull, ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
-        [LookupEditor(typeof(UserRow))]
         public Int32? User
         {
             get { return Fields.User[this]; }
@@ -37,14 +36,12 @@ namespace GraduateThesisManager.Thesis.Entities
         }
 
         [DisplayName("Thesis"), NotNull, ForeignKey("[dbo].[ThesisPool]", "Id"), LeftJoin("jThesis"), TextualField("ThesisThesisName")]
-        [LookupEditor(typeof(ThesisPoolRow))]
         public Int32? Thesis
         {
             get { return Fields.Thesis[this]; }
             set { Fields.Thesis[this] = value; }
         }
 
-        [LookupEditor(typeof(RegistrationStatusRow))]
         [DisplayName("Status"), NotNull, ForeignKey("[dbo].[RegistrationStatus]", "Id"), LeftJoin("jStatus"), TextualField("Status1")]
         public Int32? Status
         {

@@ -8126,3 +8126,15 @@ section.content > .s-DataGrid {
   color: darkgoldenrod;
   font-weight: bold;
 }
+.s-ModuleCourses-ModulesDialog > .size {
+  width: 805px;
+}
+.s-ModuleCourses-ModulesDialog .caption {
+  width: 150px;
+}
+.s-ModuleCourses-ModulesCoursesEditDialog > .size {
+  width: 500px;
+}
+.s-ModuleCourses-ModulesCoursesEditDialog .caption {
+  width: 150px;
+}
