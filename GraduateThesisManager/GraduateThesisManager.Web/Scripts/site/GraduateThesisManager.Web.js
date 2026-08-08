@@ -3678,7 +3678,7 @@ var GraduateThesisManager;
                 return _this;
             }
             ModulesCoursesEditDialog.prototype.getFormKey = function () { return ModuleCourses.ModulesCoursesForm.formKey; };
-            ModulesCoursesEditDialog.prototype.getNameProperty = function () { return ModuleCourses.ModulesCoursesRow.nameProperty; };
+            ModulesCoursesEditDialog.prototype.getNameProperty = function () { return "CourseCourseName" /* CourseCourseName */; };
             ModulesCoursesEditDialog.prototype.getLocalTextPrefix = function () { return ModuleCourses.ModulesCoursesRow.localTextPrefix; };
             ModulesCoursesEditDialog.prototype.afterLoadEntity = function () {
                 _super.prototype.afterLoadEntity.call(this);

@@ -8,8 +8,6 @@
         HeadOfDepartmentDisplayName?: string;
         HeadOfDepartmentEmail?: string;
         HeadOfDepartmentSource?: string;
-        HeadOfDepartmentPasswordHash?: string;
-        HeadOfDepartmentPasswordSalt?: string;
         HeadOfDepartmentLastDirectoryUpdate?: string;
         HeadOfDepartmentUserImage?: string;
         HeadOfDepartmentInsertDate?: string;
@@ -39,8 +37,6 @@
             HeadOfDepartmentDisplayName = "HeadOfDepartmentDisplayName",
             HeadOfDepartmentEmail = "HeadOfDepartmentEmail",
             HeadOfDepartmentSource = "HeadOfDepartmentSource",
-            HeadOfDepartmentPasswordHash = "HeadOfDepartmentPasswordHash",
-            HeadOfDepartmentPasswordSalt = "HeadOfDepartmentPasswordSalt",
             HeadOfDepartmentLastDirectoryUpdate = "HeadOfDepartmentLastDirectoryUpdate",
             HeadOfDepartmentUserImage = "HeadOfDepartmentUserImage",
             HeadOfDepartmentInsertDate = "HeadOfDepartmentInsertDate",

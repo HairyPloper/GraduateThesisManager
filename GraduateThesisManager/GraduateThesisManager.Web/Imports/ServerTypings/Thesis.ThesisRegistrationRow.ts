@@ -10,8 +10,6 @@
         UserDisplayName?: string;
         UserEmail?: string;
         UserSource?: string;
-        UserPasswordHash?: string;
-        UserPasswordSalt?: string;
         UserLastDirectoryUpdate?: string;
         UserUserImage?: string;
         UserInsertDate?: string;
@@ -49,8 +47,6 @@
             UserDisplayName = "UserDisplayName",
             UserEmail = "UserEmail",
             UserSource = "UserSource",
-            UserPasswordHash = "UserPasswordHash",
-            UserPasswordSalt = "UserPasswordSalt",
             UserLastDirectoryUpdate = "UserLastDirectoryUpdate",
             UserUserImage = "UserUserImage",
             UserInsertDate = "UserInsertDate",

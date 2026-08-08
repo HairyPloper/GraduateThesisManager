@@ -16,39 +16,58 @@ namespace GraduateThesisManager.Common.Repositories
 
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
+            request.Entity.IdFrom = Int32.Parse(Authorization.UserId);
+            request.Entity.SendDate = DateTime.Now;
+            request.Entity.IsChecked = request.Entity.IsChecked ?? false;
+            request.Entity.IsImportant = request.Entity.IsImportant ?? false;
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 
         public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
+            EnsureOwnership(uow.Connection, request.EntityId);
             return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
         }
 
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
         {
+            EnsureOwnership(uow.Connection, request.EntityId);
             return new MyDeleteHandler().Process(uow, request);
         }
 
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
+            EnsureOwnership(connection, request.EntityId);
             return new MyRetrieveHandler().Process(connection, request);
         }
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
-            if (request.EqualityFilter == null)
-                request.EqualityFilter = new Dictionary<string, object>();
-            if ((string) request.EqualityFilter["SentReacived"] == "1") // 1- reacived
-            {
-                request.EqualityFilter.Add("IdFrom", Authorization.UserId);
-            }
+            request.EqualityFilter = request.EqualityFilter ?? new Dictionary<string, object>();
+
+            object direction;
+            request.EqualityFilter.TryGetValue("SentReacived", out direction);
+
+            if (Convert.ToString(direction) == "1") // 1 = received
+                request.EqualityFilter["IdTo"] = Authorization.UserId;
             else
-            {
-                request.EqualityFilter.Add("IdTo", Authorization.UserId); // 0 -sent
-            }
+                request.EqualityFilter["IdFrom"] = Authorization.UserId; // 0 = sent
+
             request.EqualityFilter.Remove("SentReacived");
 
             return new MyListHandler().Process(connection, request);
+        }
+
+        private static void EnsureOwnership(IDbConnection connection, object entityId)
+        {
+            var userId = Int32.Parse(Authorization.UserId);
+            var messageId = Convert.ToInt32(entityId);
+            var belongsToUser = connection.Exists<MyRow>(
+                fld.Id == messageId &
+                (fld.IdFrom == userId | fld.IdTo == userId));
+
+            if (!belongsToUser)
+                throw new ValidationError("AccessDenied", "Message not found or access denied.");
         }
 
         private class MySaveHandler : SaveRequestHandler<MyRow> { }

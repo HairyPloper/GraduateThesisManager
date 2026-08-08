@@ -5,7 +5,7 @@
     export class ModulesCoursesEditDialog extends
         Common.GridEditorDialog<ModulesCoursesRow> {
         protected getFormKey() { return ModulesCoursesForm.formKey; }
-        protected getNameProperty() { return ModulesCoursesRow.nameProperty; }
+        protected getNameProperty() { return ModulesCoursesRow.Fields.CourseCourseName; }
         protected getLocalTextPrefix() { return ModulesCoursesRow.localTextPrefix; }
         protected form: ModulesCoursesForm;
         public verifierType: string;
