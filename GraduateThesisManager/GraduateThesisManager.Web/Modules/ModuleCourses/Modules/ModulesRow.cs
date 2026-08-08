@@ -76,20 +76,6 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             set { Fields.HeadOfDepartmentSource[this] = value; }
         }
 
-        [DisplayName("Head Of Department Password Hash"), Expression("jHeadOfDepartment.[PasswordHash]")]
-        public String HeadOfDepartmentPasswordHash
-        {
-            get { return Fields.HeadOfDepartmentPasswordHash[this]; }
-            set { Fields.HeadOfDepartmentPasswordHash[this] = value; }
-        }
-
-        [DisplayName("Head Of Department Password Salt"), Expression("jHeadOfDepartment.[PasswordSalt]")]
-        public String HeadOfDepartmentPasswordSalt
-        {
-            get { return Fields.HeadOfDepartmentPasswordSalt[this]; }
-            set { Fields.HeadOfDepartmentPasswordSalt[this] = value; }
-        }
-
         [DisplayName("Head Of Department Last Directory Update"), Expression("jHeadOfDepartment.[LastDirectoryUpdate]")]
         public DateTime? HeadOfDepartmentLastDirectoryUpdate
         {
@@ -172,8 +158,6 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             public StringField HeadOfDepartmentDisplayName;
             public StringField HeadOfDepartmentEmail;
             public StringField HeadOfDepartmentSource;
-            public StringField HeadOfDepartmentPasswordHash;
-            public StringField HeadOfDepartmentPasswordSalt;
             public DateTimeField HeadOfDepartmentLastDirectoryUpdate;
             public StringField HeadOfDepartmentUserImage;
             public DateTimeField HeadOfDepartmentInsertDate;

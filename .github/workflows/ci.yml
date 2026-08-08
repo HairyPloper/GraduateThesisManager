@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: GraduateThesisManager/GraduateThesisManager.Web/package-lock.json
+
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Set up NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore GraduateThesisManager.sln -NonInteractive
+
+      - name: Restore npm packages
+        run: npm ci --prefix GraduateThesisManager/GraduateThesisManager.Web
+
+      - name: Type-check TypeScript
+        run: packages/Microsoft.TypeScript.MSBuild.2.8.3/tools/tsc/tsc.exe -p GraduateThesisManager/GraduateThesisManager.Web --noEmit
+
+      - name: Build
+        run: msbuild GraduateThesisManager.sln /m /p:Configuration=Release /p:RestorePackages=false

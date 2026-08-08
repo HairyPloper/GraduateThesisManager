@@ -91,20 +91,6 @@ namespace GraduateThesisManager.Thesis.Entities
             set { Fields.UserSource[this] = value; }
         }
 
-        [DisplayName("User Password Hash"), Expression("jUser.[PasswordHash]")]
-        public String UserPasswordHash
-        {
-            get { return Fields.UserPasswordHash[this]; }
-            set { Fields.UserPasswordHash[this] = value; }
-        }
-
-        [DisplayName("User Password Salt"), Expression("jUser.[PasswordSalt]")]
-        public String UserPasswordSalt
-        {
-            get { return Fields.UserPasswordSalt[this]; }
-            set { Fields.UserPasswordSalt[this] = value; }
-        }
-
         [DisplayName("User Last Directory Update"), Expression("jUser.[LastDirectoryUpdate]")]
         public DateTime? UserLastDirectoryUpdate
         {
@@ -269,8 +255,6 @@ namespace GraduateThesisManager.Thesis.Entities
             public StringField UserDisplayName;
             public StringField UserEmail;
             public StringField UserSource;
-            public StringField UserPasswordHash;
-            public StringField UserPasswordSalt;
             public DateTimeField UserLastDirectoryUpdate;
             public StringField UserUserImage;
             public DateTimeField UserInsertDate;

@@ -88,20 +88,6 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             set { Fields.LecturerSource[this] = value; }
         }
 
-        [DisplayName("Lecturer Password Hash"), Expression("jLecturer.[PasswordHash]")]
-        public String LecturerPasswordHash
-        {
-            get { return Fields.LecturerPasswordHash[this]; }
-            set { Fields.LecturerPasswordHash[this] = value; }
-        }
-
-        [DisplayName("Lecturer Password Salt"), Expression("jLecturer.[PasswordSalt]")]
-        public String LecturerPasswordSalt
-        {
-            get { return Fields.LecturerPasswordSalt[this]; }
-            set { Fields.LecturerPasswordSalt[this] = value; }
-        }
-
         [DisplayName("Lecturer Last Directory Update"), Expression("jLecturer.[LastDirectoryUpdate]")]
         public DateTime? LecturerLastDirectoryUpdate
         {
@@ -181,8 +167,6 @@ namespace GraduateThesisManager.ModuleCourses.Entities
             public StringField LecturerDisplayName;
             public StringField LecturerEmail;
             public StringField LecturerSource;
-            public StringField LecturerPasswordHash;
-            public StringField LecturerPasswordSalt;
             public DateTimeField LecturerLastDirectoryUpdate;
             public StringField LecturerUserImage;
             public DateTimeField LecturerInsertDate;

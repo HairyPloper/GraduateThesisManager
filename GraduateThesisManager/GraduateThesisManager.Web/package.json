@@ -1,10 +1,11 @@
 {
-  "name": "serene",
+  "name": "graduate-thesis-manager",
   "version": "1.0.0",
-  "description": "GraduateThesisManager",
+  "description": "Legacy ASP.NET MVC portal for managing graduate thesis workflows.",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/volkanceylan/serenity"
+    "url": "https://github.com/HairyPloper/GraduateThesisManager.git"
   },
   "main": "index.js",
   "dependencies": {
@@ -21,5 +22,5 @@
   "devDependencies": {},
   "scripts": {},
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }

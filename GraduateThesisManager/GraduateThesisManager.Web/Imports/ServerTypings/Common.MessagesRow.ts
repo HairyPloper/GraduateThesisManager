@@ -14,8 +14,6 @@
         IdFromDisplayName?: string;
         IdFromEmail?: string;
         IdFromSource?: string;
-        IdFromPasswordHash?: string;
-        IdFromPasswordSalt?: string;
         IdFromLastDirectoryUpdate?: string;
         IdFromUserImage?: string;
         IdFromInsertDate?: string;
@@ -27,8 +25,6 @@
         IdToDisplayName?: string;
         IdToEmail?: string;
         IdToSource?: string;
-        IdToPasswordHash?: string;
-        IdToPasswordSalt?: string;
         IdToLastDirectoryUpdate?: string;
         IdToUserImage?: string;
         IdToInsertDate?: string;
@@ -58,8 +54,6 @@
             IdFromDisplayName = "IdFromDisplayName",
             IdFromEmail = "IdFromEmail",
             IdFromSource = "IdFromSource",
-            IdFromPasswordHash = "IdFromPasswordHash",
-            IdFromPasswordSalt = "IdFromPasswordSalt",
             IdFromLastDirectoryUpdate = "IdFromLastDirectoryUpdate",
             IdFromUserImage = "IdFromUserImage",
             IdFromInsertDate = "IdFromInsertDate",
@@ -71,8 +65,6 @@
             IdToDisplayName = "IdToDisplayName",
             IdToEmail = "IdToEmail",
             IdToSource = "IdToSource",
-            IdToPasswordHash = "IdToPasswordHash",
-            IdToPasswordSalt = "IdToPasswordSalt",
             IdToLastDirectoryUpdate = "IdToLastDirectoryUpdate",
             IdToUserImage = "IdToUserImage",
             IdToInsertDate = "IdToInsertDate",

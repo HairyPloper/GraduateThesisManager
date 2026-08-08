@@ -140,15 +140,14 @@ namespace GraduateThesisManager.Administration.Repositories
 
             public static bool IsValidUsername(string name)
             {
-                if (name == null ||
-                    name.Length < 0)
+                if (String.IsNullOrEmpty(name))
                     return false;
 
                 var c = name[0];
                 if (!IsInvariantLetter(c))
                     return false;
 
-                for (var i = 1; i < name.Length - 1; i++)
+                for (var i = 1; i < name.Length; i++)
                 {
                     c = name[i];
                     if (!IsValidEmailChar(c))

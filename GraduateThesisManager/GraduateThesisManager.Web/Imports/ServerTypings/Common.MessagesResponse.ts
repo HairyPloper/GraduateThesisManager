@@ -3,5 +3,10 @@
         IsSuccessful?: boolean;
         error?: string;
     }
+
+    export interface MessagesResponseBatchRequest extends Serenity.ServiceRequest {
+        messages?: string[];
+        action?: number;
+    }
 }
 

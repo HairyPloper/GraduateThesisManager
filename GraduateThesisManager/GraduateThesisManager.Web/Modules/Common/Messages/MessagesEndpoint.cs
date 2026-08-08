@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Services;
 using Serenity.Abstractions;
 using Serenity.Reporting;
@@ -69,40 +71,57 @@ namespace GraduateThesisManager.Common.Endpoints
         [HttpPost, AuthorizeDelete(typeof(MyRow))]
         public MessagesResponse MessageBatchAction(MessagesResponseBatchRequest request, IUnitOfWork uow)
         {
-            MessagesResponse response = new MessagesResponse();
-            var result = string.Join(",", request.messages);
+            var response = new MessagesResponse { IsSuccessful = true };
+
+            if (request == null || request.messages == null || request.messages.Length == 0)
+                throw new ValidationError("InvalidRequest", "Select at least one message.");
+
+            if (request.messages.Length > 100 || request.action < 0 || request.action > 2)
+                throw new ValidationError("InvalidRequest", "Invalid message batch request.");
+
+            int parsedId;
+            var messageIds = request.messages
+                .Where(x => Int32.TryParse(x, out parsedId) && parsedId > 0)
+                .Select(Int32.Parse)
+                .Distinct()
+                .ToList();
+
+            if (messageIds.Count != request.messages.Distinct().Count())
+                throw new ValidationError("InvalidRequest", "One or more message identifiers are invalid.");
+
+            var userId = ((UserDefinition)Authorization.UserDefinition).UserId;
+            var fields = MyRow.Fields;
+
             try
             {
-                string sqlStatement = "";
-                switch (request.action)
+                foreach (var messageId in messageIds)
                 {
-                    //Delete
-                    case 0:
-                        {
-                            sqlStatement = " DELETE FROM Messages WHERE Id IN (" + result + ")";
-                            break;
-                        }
-                    //Check
-                    case 1:
-                        {
-                            sqlStatement = "UPDATE Messages SET IsChecked = 1 - IsChecked WHERE [Id] IN (" + result + ")";
-                            break;
-                        }
-                    //Important
-                    case 2:
-                        {
-                            sqlStatement = "UPDATE Messages SET IsImportant = 1 - IsImportant WHERE [Id] IN (" + result + ")";
-                            break;
-                        }
+                    var message = uow.Connection.TryById<MyRow>(messageId);
+                    if (message == null || (message.IdFrom != userId && message.IdTo != userId))
+                        continue;
+
+                    if (request.action == 0)
+                        new SqlDelete(fields.TableName)
+                            .Where(fields.Id == messageId)
+                            .Execute(uow.Connection);
+                    else if (request.action == 1)
+                        new SqlUpdate(fields.TableName)
+                            .Set(fields.IsChecked, !message.IsChecked.GetValueOrDefault())
+                            .Where(fields.Id == messageId)
+                            .Execute(uow.Connection);
+                    else
+                        new SqlUpdate(fields.TableName)
+                            .Set(fields.IsImportant, !message.IsImportant.GetValueOrDefault())
+                            .Where(fields.Id == messageId)
+                            .Execute(uow.Connection);
                 }
-                uow.Connection.Query(sqlStatement);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                e.Log();
+                ex.Log();
                 response.IsSuccessful = false;
-                response.error = e.Message;
-                throw e;
+                response.error = ex.Message;
+                throw;
             }
 
             return response;
@@ -113,8 +132,22 @@ namespace GraduateThesisManager.Common.Endpoints
         [ValidateInput(false)]
         public JsonResult SendMessage(Message data, IUnitOfWork uow)
         {
+            if (data == null)
+                throw new ValidationError("InvalidRequest", "Message data is required.");
+
+            var recipient = data.to.TrimToNull();
+            var subject = data.subject.TrimToNull();
+            var messageBody = data.message.TrimToNull();
+
+            if (recipient == null || subject == null || messageBody == null)
+                throw new ValidationError("InvalidRequest", "Recipient, subject, and message are required.");
+
+            var safeMessageBody = HttpUtility.HtmlEncode(messageBody);
+            if (subject.Length > 100 || safeMessageBody.Length > 1000)
+                throw new ValidationError("InvalidRequest", "Subject or message is too long.");
+
             var idFrom = ((UserDefinition)Authorization.UserDefinition).UserId;
-            var user = Dependency.Resolve<IUserRetrieveService>().ByUsername(data.to) as UserDefinition;
+            var user = Dependency.Resolve<IUserRetrieveService>().ByUsername(recipient) as UserDefinition;
             if (user == null)
                 throw new ValidationError("CantFindUserWithEmail", Texts.Validation.CantFindUserWithEmail);
             try
@@ -124,8 +157,8 @@ namespace GraduateThesisManager.Common.Endpoints
                     IdFrom = idFrom,
                     IdTo = user.UserId,
                     SendDate = DateTime.Now,
-                    Message = data.message,
-                    Subject = data.subject,
+                    Message = safeMessageBody,
+                    Subject = subject,
                     IsChecked = false,
                     IsImportant = false,
                 });

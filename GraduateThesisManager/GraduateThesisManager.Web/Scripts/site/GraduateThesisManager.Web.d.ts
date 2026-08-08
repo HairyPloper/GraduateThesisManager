@@ -370,11 +370,11 @@ declare namespace GraduateThesisManager.Common {
 }
 declare namespace GraduateThesisManager.Common {
     interface MessagesForm {
+        IdFromUsername: Serenity.StringEditor;
         IdFrom: Serenity.IntegerEditor;
         SendDate: Serenity.DateEditor;
         IsImportant: Serenity.BooleanEditor;
         IsChecked: Serenity.BooleanEditor;
-        ReadDate: Serenity.DateEditor;
         Subject: Serenity.StringEditor;
         Message: Serenity.HtmlContentEditor;
     }
@@ -382,6 +382,16 @@ declare namespace GraduateThesisManager.Common {
         static formKey: string;
         private static init;
         constructor(prefix: string);
+    }
+}
+declare namespace GraduateThesisManager.Common {
+    interface MessagesResponse extends Serenity.ServiceResponse {
+        IsSuccessful?: boolean;
+        error?: string;
+    }
+    interface MessagesResponseBatchRequest extends Serenity.ServiceRequest {
+        messages?: string[];
+        action?: number;
     }
 }
 declare namespace GraduateThesisManager.Common {
@@ -395,12 +405,11 @@ declare namespace GraduateThesisManager.Common {
         Subject?: string;
         IsImportant?: boolean;
         IsChecked?: boolean;
+        SentReacived?: string;
         IdFromUsername?: string;
         IdFromDisplayName?: string;
         IdFromEmail?: string;
         IdFromSource?: string;
-        IdFromPasswordHash?: string;
-        IdFromPasswordSalt?: string;
         IdFromLastDirectoryUpdate?: string;
         IdFromUserImage?: string;
         IdFromInsertDate?: string;
@@ -412,8 +421,6 @@ declare namespace GraduateThesisManager.Common {
         IdToDisplayName?: string;
         IdToEmail?: string;
         IdToSource?: string;
-        IdToPasswordHash?: string;
-        IdToPasswordSalt?: string;
         IdToLastDirectoryUpdate?: string;
         IdToUserImage?: string;
         IdToInsertDate?: string;
@@ -436,12 +443,11 @@ declare namespace GraduateThesisManager.Common {
             Subject = "Subject",
             IsImportant = "IsImportant",
             IsChecked = "IsChecked",
+            SentReacived = "SentReacived",
             IdFromUsername = "IdFromUsername",
             IdFromDisplayName = "IdFromDisplayName",
             IdFromEmail = "IdFromEmail",
             IdFromSource = "IdFromSource",
-            IdFromPasswordHash = "IdFromPasswordHash",
-            IdFromPasswordSalt = "IdFromPasswordSalt",
             IdFromLastDirectoryUpdate = "IdFromLastDirectoryUpdate",
             IdFromUserImage = "IdFromUserImage",
             IdFromInsertDate = "IdFromInsertDate",
@@ -453,8 +459,6 @@ declare namespace GraduateThesisManager.Common {
             IdToDisplayName = "IdToDisplayName",
             IdToEmail = "IdToEmail",
             IdToSource = "IdToSource",
-            IdToPasswordHash = "IdToPasswordHash",
-            IdToPasswordSalt = "IdToPasswordSalt",
             IdToLastDirectoryUpdate = "IdToLastDirectoryUpdate",
             IdToUserImage = "IdToUserImage",
             IdToInsertDate = "IdToInsertDate",
@@ -473,12 +477,14 @@ declare namespace GraduateThesisManager.Common {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<MessagesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<MessagesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function MessageBatchAction(request: MessagesResponseBatchRequest, onSuccess?: (response: MessagesResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Common/Messages/Create",
             Update = "Common/Messages/Update",
             Delete = "Common/Messages/Delete",
             Retrieve = "Common/Messages/Retrieve",
             List = "Common/Messages/List",
+            MessageBatchAction = "Common/Messages/MessageBatchAction",
         }
     }
 }
@@ -489,6 +495,52 @@ declare namespace GraduateThesisManager.Common.Pages {
         IsImage?: boolean;
         Width?: number;
         Height?: number;
+    }
+}
+declare namespace GraduateThesisManager.Common {
+}
+declare namespace GraduateThesisManager.Common {
+    interface RegistrationStatusForm {
+        Status: Serenity.StringEditor;
+    }
+    class RegistrationStatusForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace GraduateThesisManager.Common {
+    interface RegistrationStatusRow {
+        Id?: number;
+        Status?: string;
+    }
+    namespace RegistrationStatusRow {
+        const idProperty = "Id";
+        const nameProperty = "Status";
+        const localTextPrefix = "Common.RegistrationStatus";
+        const lookupKey = "Common.RegistrationStatus";
+        function getLookup(): Q.Lookup<RegistrationStatusRow>;
+        const enum Fields {
+            Id = "Id",
+            Status = "Status",
+        }
+    }
+}
+declare namespace GraduateThesisManager.Common {
+    namespace RegistrationStatusService {
+        const baseUrl = "Common/RegistrationStatus";
+        function Create(request: Serenity.SaveRequest<RegistrationStatusRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<RegistrationStatusRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<RegistrationStatusRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<RegistrationStatusRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Common/RegistrationStatus/Create",
+            Update = "Common/RegistrationStatus/Update",
+            Delete = "Common/RegistrationStatus/Delete",
+            Retrieve = "Common/RegistrationStatus/Retrieve",
+            List = "Common/RegistrationStatus/List",
+        }
     }
 }
 declare namespace GraduateThesisManager.Common {
@@ -655,6 +707,229 @@ declare namespace GraduateThesisManager.Membership {
         Password?: string;
     }
 }
+declare namespace GraduateThesisManager.ModuleCourses {
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    interface CoursesForm {
+        CourseName: Serenity.StringEditor;
+        CourseDescription: Serenity.TextAreaEditor;
+        Lecturer: Serenity.LookupEditor;
+        Year: Common.YearEditor;
+        Semester: Common.SemesterEditor;
+    }
+    class CoursesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    interface CoursesRow {
+        Id?: number;
+        CourseName?: string;
+        CourseDescription?: string;
+        Lecturer?: number;
+        Year?: number;
+        Semester?: number;
+        LecturerUsername?: string;
+        LecturerDisplayName?: string;
+        LecturerEmail?: string;
+        LecturerSource?: string;
+        LecturerLastDirectoryUpdate?: string;
+        LecturerUserImage?: string;
+        LecturerInsertDate?: string;
+        LecturerInsertUserId?: number;
+        LecturerUpdateDate?: string;
+        LecturerUpdateUserId?: number;
+        LecturerIsActive?: number;
+    }
+    namespace CoursesRow {
+        const idProperty = "Id";
+        const nameProperty = "CourseName";
+        const localTextPrefix = "ModuleCourses.Courses";
+        const lookupKey = "ModuleCourses.Courses";
+        function getLookup(): Q.Lookup<CoursesRow>;
+        const enum Fields {
+            Id = "Id",
+            CourseName = "CourseName",
+            CourseDescription = "CourseDescription",
+            Lecturer = "Lecturer",
+            Year = "Year",
+            Semester = "Semester",
+            LecturerUsername = "LecturerUsername",
+            LecturerDisplayName = "LecturerDisplayName",
+            LecturerEmail = "LecturerEmail",
+            LecturerSource = "LecturerSource",
+            LecturerLastDirectoryUpdate = "LecturerLastDirectoryUpdate",
+            LecturerUserImage = "LecturerUserImage",
+            LecturerInsertDate = "LecturerInsertDate",
+            LecturerInsertUserId = "LecturerInsertUserId",
+            LecturerUpdateDate = "LecturerUpdateDate",
+            LecturerUpdateUserId = "LecturerUpdateUserId",
+            LecturerIsActive = "LecturerIsActive",
+        }
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    namespace CoursesService {
+        const baseUrl = "ModuleCourses/Courses";
+        function Create(request: Serenity.SaveRequest<CoursesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CoursesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CoursesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CoursesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "ModuleCourses/Courses/Create",
+            Update = "ModuleCourses/Courses/Update",
+            Delete = "ModuleCourses/Courses/Delete",
+            Retrieve = "ModuleCourses/Courses/Retrieve",
+            List = "ModuleCourses/Courses/List",
+        }
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    interface ModulesCoursesForm {
+        ModuleId: Serenity.IntegerEditor;
+        CourseId: Serenity.LookupEditor;
+        CourseCourseName: Serenity.StringEditor;
+        CourseCourseDescription: Serenity.StringEditor;
+        CourseYear: Serenity.IntegerEditor;
+        CourseSemester: Serenity.IntegerEditor;
+    }
+    class ModulesCoursesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    interface ModulesCoursesRow {
+        Id?: number;
+        ModuleId?: number;
+        CourseId?: number;
+        ModuleName?: string;
+        ModuleDescription?: string;
+        ModuleHeadOfDepartment?: number;
+        CourseCourseName?: string;
+        CourseCourseDescription?: string;
+        CourseLecturer?: number;
+        CourseYear?: number;
+        CourseSemester?: number;
+    }
+    namespace ModulesCoursesRow {
+        const idProperty = "Id";
+        const localTextPrefix = "ModuleCourses.ModulesCourses";
+        const enum Fields {
+            Id = "Id",
+            ModuleId = "ModuleId",
+            CourseId = "CourseId",
+            ModuleName = "ModuleName",
+            ModuleDescription = "ModuleDescription",
+            ModuleHeadOfDepartment = "ModuleHeadOfDepartment",
+            CourseCourseName = "CourseCourseName",
+            CourseCourseDescription = "CourseCourseDescription",
+            CourseLecturer = "CourseLecturer",
+            CourseYear = "CourseYear",
+            CourseSemester = "CourseSemester",
+        }
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    namespace ModulesCoursesService {
+        const baseUrl = "ModuleCourses/ModulesCourses";
+        function Create(request: Serenity.SaveRequest<ModulesCoursesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ModulesCoursesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ModulesCoursesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ModulesCoursesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "ModuleCourses/ModulesCourses/Create",
+            Update = "ModuleCourses/ModulesCourses/Update",
+            Delete = "ModuleCourses/ModulesCourses/Delete",
+            Retrieve = "ModuleCourses/ModulesCourses/Retrieve",
+            List = "ModuleCourses/ModulesCourses/List",
+        }
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    interface ModulesForm {
+        Name: Serenity.StringEditor;
+        Description: Serenity.TextAreaEditor;
+        HeadOfDepartmentDisplayName: Serenity.StringEditor;
+        CoursesList: ModulesCoursesEditor;
+    }
+    class ModulesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    interface ModulesRow {
+        Id?: number;
+        Name?: string;
+        Description?: string;
+        HeadOfDepartment?: number;
+        HeadOfDepartmentUsername?: string;
+        HeadOfDepartmentDisplayName?: string;
+        HeadOfDepartmentEmail?: string;
+        HeadOfDepartmentSource?: string;
+        HeadOfDepartmentLastDirectoryUpdate?: string;
+        HeadOfDepartmentUserImage?: string;
+        HeadOfDepartmentInsertDate?: string;
+        HeadOfDepartmentInsertUserId?: number;
+        HeadOfDepartmentUpdateDate?: string;
+        HeadOfDepartmentUpdateUserId?: number;
+        HeadOfDepartmentIsActive?: number;
+        CoursesList?: ModulesCoursesRow[];
+    }
+    namespace ModulesRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "ModuleCourses.Modules";
+        const lookupKey = "ModuleCourses.Modules";
+        function getLookup(): Q.Lookup<ModulesRow>;
+        const enum Fields {
+            Id = "Id",
+            Name = "Name",
+            Description = "Description",
+            HeadOfDepartment = "HeadOfDepartment",
+            HeadOfDepartmentUsername = "HeadOfDepartmentUsername",
+            HeadOfDepartmentDisplayName = "HeadOfDepartmentDisplayName",
+            HeadOfDepartmentEmail = "HeadOfDepartmentEmail",
+            HeadOfDepartmentSource = "HeadOfDepartmentSource",
+            HeadOfDepartmentLastDirectoryUpdate = "HeadOfDepartmentLastDirectoryUpdate",
+            HeadOfDepartmentUserImage = "HeadOfDepartmentUserImage",
+            HeadOfDepartmentInsertDate = "HeadOfDepartmentInsertDate",
+            HeadOfDepartmentInsertUserId = "HeadOfDepartmentInsertUserId",
+            HeadOfDepartmentUpdateDate = "HeadOfDepartmentUpdateDate",
+            HeadOfDepartmentUpdateUserId = "HeadOfDepartmentUpdateUserId",
+            HeadOfDepartmentIsActive = "HeadOfDepartmentIsActive",
+            CoursesList = "CoursesList",
+        }
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    namespace ModulesService {
+        const baseUrl = "ModuleCourses/Modules";
+        function Create(request: Serenity.SaveRequest<ModulesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ModulesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ModulesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ModulesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "ModuleCourses/Modules/Create",
+            Update = "ModuleCourses/Modules/Update",
+            Delete = "ModuleCourses/Modules/Delete",
+            Retrieve = "ModuleCourses/Modules/Retrieve",
+            List = "ModuleCourses/Modules/List",
+        }
+    }
+}
 declare namespace GraduateThesisManager {
     interface ScriptUserDefinition {
         Username?: string;
@@ -663,6 +938,202 @@ declare namespace GraduateThesisManager {
         Permissions?: {
             [key: string]: boolean;
         };
+        UserId?: number;
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    interface RegistrationForm {
+        User: Serenity.IntegerEditor;
+        Thesis: Serenity.IntegerEditor;
+        Status: Serenity.IntegerEditor;
+        CreateDate: Serenity.DateTimeEditor;
+        ExpireDate: Serenity.DateTimeEditor;
+        UserDisplayName: Serenity.StringEditor;
+        ThesisThesisName: Serenity.StringEditor;
+    }
+    class RegistrationForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+}
+declare namespace GraduateThesisManager.Thesis {
+    interface ThesisPoolForm {
+        ThesisName: Serenity.StringEditor;
+        ThesisDescription: Serenity.TextAreaEditor;
+        CreateDate: Serenity.DateEditor;
+        ExpireDate: Serenity.DateEditor;
+        CorseId: Serenity.LookupEditor;
+        ThesisDocument: Serenity.MultipleImageUploadEditor;
+    }
+    class ThesisPoolForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    interface ThesisPoolRow {
+        Id?: number;
+        ThesisName?: string;
+        ThesisDescription?: string;
+        CreateDate?: string;
+        ExpireDate?: string;
+        CorseId?: number;
+        ThesisDocument?: string;
+        CorseCourseName?: string;
+        CorseCourseDescription?: string;
+        CorseLecturer?: number;
+        CorseYear?: number;
+        CorseSemester?: number;
+        CorseLecturerName?: string;
+    }
+    namespace ThesisPoolRow {
+        const idProperty = "Id";
+        const nameProperty = "ThesisName";
+        const localTextPrefix = "Thesis.ThesisPool";
+        const lookupKey = "Thesis.ThesisPool";
+        function getLookup(): Q.Lookup<ThesisPoolRow>;
+        const enum Fields {
+            Id = "Id",
+            ThesisName = "ThesisName",
+            ThesisDescription = "ThesisDescription",
+            CreateDate = "CreateDate",
+            ExpireDate = "ExpireDate",
+            CorseId = "CorseId",
+            ThesisDocument = "ThesisDocument",
+            CorseCourseName = "CorseCourseName",
+            CorseCourseDescription = "CorseCourseDescription",
+            CorseLecturer = "CorseLecturer",
+            CorseYear = "CorseYear",
+            CorseSemester = "CorseSemester",
+            CorseLecturerName = "CorseLecturerName",
+        }
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    namespace ThesisPoolService {
+        const baseUrl = "Thesis/ThesisPool";
+        function Create(request: Serenity.SaveRequest<ThesisPoolRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ThesisPoolRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ThesisPoolRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ThesisPoolRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Thesis/ThesisPool/Create",
+            Update = "Thesis/ThesisPool/Update",
+            Delete = "Thesis/ThesisPool/Delete",
+            Retrieve = "Thesis/ThesisPool/Retrieve",
+            List = "Thesis/ThesisPool/List",
+        }
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+}
+declare namespace GraduateThesisManager.Thesis {
+    interface ThesisRegistrationForm {
+        User: Serenity.LookupEditor;
+        UserDisplayName: Serenity.StringEditor;
+        Thesis: Serenity.LookupEditor;
+        ThesisThesisName: Serenity.StringEditor;
+        Status: Serenity.LookupEditor;
+        CreateDate: Serenity.DateTimeEditor;
+        ExpireDate: Serenity.DateTimeEditor;
+        LecturerName: Serenity.StringEditor;
+    }
+    class ThesisRegistrationForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    interface ThesisRegistrationRow {
+        Id?: number;
+        User?: number;
+        Thesis?: number;
+        Status?: number;
+        CreateDate?: string;
+        ExpireDate?: string;
+        UserUsername?: string;
+        UserDisplayName?: string;
+        UserEmail?: string;
+        UserSource?: string;
+        UserLastDirectoryUpdate?: string;
+        UserUserImage?: string;
+        UserInsertDate?: string;
+        UserInsertUserId?: number;
+        UserUpdateDate?: string;
+        UserUpdateUserId?: number;
+        UserIsActive?: number;
+        ThesisThesisName?: string;
+        ThesisThesisDescription?: string;
+        ThesisCreateDate?: string;
+        ThesisExpireDate?: string;
+        ThesisCorseId?: number;
+        ThesisThesisDocument?: string;
+        Status1?: string;
+        ModuleId?: number;
+        CourseId?: number;
+        ModuleName?: string;
+        CourseName?: string;
+        LecturerId?: number;
+        LecturerName?: string;
+    }
+    namespace ThesisRegistrationRow {
+        const idProperty = "Id";
+        const localTextPrefix = "Thesis.ThesisRegistration";
+        const enum Fields {
+            Id = "Id",
+            User = "User",
+            Thesis = "Thesis",
+            Status = "Status",
+            CreateDate = "CreateDate",
+            ExpireDate = "ExpireDate",
+            UserUsername = "UserUsername",
+            UserDisplayName = "UserDisplayName",
+            UserEmail = "UserEmail",
+            UserSource = "UserSource",
+            UserLastDirectoryUpdate = "UserLastDirectoryUpdate",
+            UserUserImage = "UserUserImage",
+            UserInsertDate = "UserInsertDate",
+            UserInsertUserId = "UserInsertUserId",
+            UserUpdateDate = "UserUpdateDate",
+            UserUpdateUserId = "UserUpdateUserId",
+            UserIsActive = "UserIsActive",
+            ThesisThesisName = "ThesisThesisName",
+            ThesisThesisDescription = "ThesisThesisDescription",
+            ThesisCreateDate = "ThesisCreateDate",
+            ThesisExpireDate = "ThesisExpireDate",
+            ThesisCorseId = "ThesisCorseId",
+            ThesisThesisDocument = "ThesisThesisDocument",
+            Status1 = "Status1",
+            ModuleId = "ModuleId",
+            CourseId = "CourseId",
+            ModuleName = "ModuleName",
+            CourseName = "CourseName",
+            LecturerId = "LecturerId",
+            LecturerName = "LecturerName",
+        }
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    namespace ThesisRegistrationService {
+        const baseUrl = "Thesis/ThesisRegistration";
+        function Create(request: Serenity.SaveRequest<ThesisRegistrationRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ThesisRegistrationRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ThesisRegistrationRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ThesisRegistrationRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Thesis/ThesisRegistration/Create",
+            Update = "Thesis/ThesisRegistration/Update",
+            Delete = "Thesis/ThesisRegistration/Delete",
+            Retrieve = "Thesis/ThesisRegistration/Retrieve",
+            List = "Thesis/ThesisRegistration/List",
+        }
     }
 }
 declare namespace GraduateThesisManager.LanguageList {
@@ -957,26 +1428,28 @@ declare namespace GraduateThesisManager.Common {
         protected deleteHandler(options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void): void;
     }
 }
-declare namespace GraduateThesisManager {
-    /**
-     * This is an editor widget but it only displays a text, not edits it.
-     *
-     */
-    class StaticTextBlock extends Serenity.Widget<StaticTextBlockOptions> implements Serenity.ISetEditValue {
-        private value;
-        constructor(container: JQuery, options: StaticTextBlockOptions);
-        private updateElementContent();
-        /**
-         * By implementing ISetEditValue interface, we allow this editor to display its field value.
-         * But only do this when our text content is not explicitly set in options
-         */
-        setEditValue(source: any, property: Serenity.PropertyItem): void;
+declare namespace GraduateThesisManager.Common {
+    class MessageHelperEditor extends Serenity.Select2Editor<any, any> {
+        constructor(container: JQuery);
+        getSelect2Options(): Select2Options;
+        addInplaceCreate(addTitle?: string, editTitle?: string): void;
+        inplaceCreateClick(e: any): void;
     }
-    interface StaticTextBlockOptions {
-        text: string;
-        isHtml: boolean;
-        isLocalText: boolean;
-        hideLabel: boolean;
+}
+declare namespace GraduateThesisManager.Common {
+    class SemesterEditor extends Serenity.Select2Editor<any, any> {
+        constructor(container: JQuery);
+        getSelect2Options(): Select2Options;
+        addInplaceCreate(addTitle?: string, editTitle?: string): void;
+        inplaceCreateClick(e: any): void;
+    }
+}
+declare namespace GraduateThesisManager.Common {
+    class YearEditor extends Serenity.Select2Editor<any, any> {
+        constructor(container: JQuery);
+        getSelect2Options(): Select2Options;
+        addInplaceCreate(addTitle?: string, editTitle?: string): void;
+        inplaceCreateClick(e: any): void;
     }
 }
 declare namespace GraduateThesisManager.Common {
@@ -1022,6 +1495,9 @@ declare namespace GraduateThesisManager.Common {
         constructor();
         getSaveState(): string;
         loadResponse(data: any): void;
+        protected getToolbarButtons(): Serenity.ToolButton[];
+        protected onDialogOpen(): void;
+        insufitionPer(): boolean;
     }
 }
 declare namespace GraduateThesisManager.Common {
@@ -1034,10 +1510,12 @@ declare namespace GraduateThesisManager.Common {
         private rowSelection;
         constructor(container: JQuery);
         protected getQuickSearchFields(): Serenity.QuickSearchField[];
+        protected getItemCssClass(item: MessagesRow, index: number): string;
         protected getColumns(): Slick.Column[];
         protected getButtons(): Serenity.ToolButton[];
         protected createToolbarExtensions(): void;
         getkeys(items: string[]): string[];
+        insufitionPer(): boolean;
     }
 }
 declare namespace GraduateThesisManager.Common {
@@ -1056,6 +1534,26 @@ declare namespace GraduateThesisManager.Common {
     class ThemeSelection extends Serenity.Widget<any> {
         constructor(select: JQuery);
         protected getCurrentTheme(): string;
+    }
+}
+declare namespace GraduateThesisManager.Common {
+    class RegistrationStatusDialog extends Serenity.EntityDialog<RegistrationStatusRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: RegistrationStatusForm;
+    }
+}
+declare namespace GraduateThesisManager.Common {
+    class RegistrationStatusGrid extends Serenity.EntityGrid<RegistrationStatusRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof RegistrationStatusDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare var jsPDF: any;
@@ -1142,6 +1640,154 @@ declare namespace GraduateThesisManager.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    class CoursesDialog extends Serenity.EntityDialog<CoursesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: CoursesForm;
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    class CoursesGrid extends Serenity.EntityGrid<CoursesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CoursesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    class ModulesDialog extends Serenity.EntityDialog<ModulesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ModulesForm;
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    class ModulesGrid extends Serenity.EntityGrid<ModulesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ModulesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    class ModulesCoursesDialog extends Serenity.EntityDialog<ModulesCoursesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: ModulesCoursesForm;
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    class ModulesCoursesEditDialog extends Common.GridEditorDialog<ModulesCoursesRow> {
+        protected getFormKey(): string;
+        protected getNameProperty(): ModulesCoursesRow.Fields;
+        protected getLocalTextPrefix(): string;
+        protected form: ModulesCoursesForm;
+        verifierType: string;
+        constructor();
+        protected afterLoadEntity(): void;
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    class ModulesCoursesEditor extends Common.GridEditorBase<ModulesCoursesRow> {
+        protected getColumnsKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getDialogType(): typeof ModulesCoursesEditDialog;
+        verifierType: string;
+        constructor(container: JQuery);
+        protected validateEntity(row: ModulesCoursesRow, id: number): boolean;
+        protected getButtons(): Serenity.ToolButton[];
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
+        protected getAddButtonCaption(): string;
+    }
+}
+declare namespace GraduateThesisManager.ModuleCourses {
+    class ModulesCoursesGrid extends Serenity.EntityGrid<ModulesCoursesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ModulesCoursesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    class ThesisPoolDialog extends Serenity.EntityDialog<ThesisPoolRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ThesisPoolForm;
+        protected getToolbarButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    class ThesisPoolGrid extends Serenity.EntityGrid<ThesisPoolRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ThesisPoolDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    class RegistrationDialog extends Serenity.EntityDialog<ThesisRegistrationRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        registerEntry: ThesisPoolRow;
+        protected form: RegistrationForm;
+        protected onDialogOpen(): void;
+        protected onSaveSuccess(response: any): void;
+        protected getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    class ThesisRegistrationDialog extends Serenity.EntityDialog<ThesisRegistrationRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: ThesisRegistrationForm;
+        registerEntry: ThesisPoolRow;
+        protected getToolbarButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace GraduateThesisManager.Thesis {
+    class ThesisRegistrationGrid extends Serenity.EntityGrid<ThesisRegistrationRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ThesisRegistrationDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getQuickSearchFields(): Serenity.QuickSearchField[];
+        protected getColumns(): Slick.Column[];
+        protected createSlickGrid(): Slick.Grid;
+        protected getItemCssClass(item: ThesisRegistrationRow, index: number): string;
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace GraduateThesisManager.Authorization {

@@ -108,20 +108,6 @@ namespace GraduateThesisManager.Common.Entities
             set { Fields.IdFromSource[this] = value; }
         }
 
-        [DisplayName("Id From Password Hash"), Expression("jIdFrom.[PasswordHash]")]
-        public String IdFromPasswordHash
-        {
-            get { return Fields.IdFromPasswordHash[this]; }
-            set { Fields.IdFromPasswordHash[this] = value; }
-        }
-
-        [DisplayName("Id From Password Salt"), Expression("jIdFrom.[PasswordSalt]")]
-        public String IdFromPasswordSalt
-        {
-            get { return Fields.IdFromPasswordSalt[this]; }
-            set { Fields.IdFromPasswordSalt[this] = value; }
-        }
-
         [DisplayName("Id From Last Directory Update"), Expression("jIdFrom.[LastDirectoryUpdate]")]
         public DateTime? IdFromLastDirectoryUpdate
         {
@@ -197,20 +183,6 @@ namespace GraduateThesisManager.Common.Entities
         {
             get { return Fields.IdToSource[this]; }
             set { Fields.IdToSource[this] = value; }
-        }
-
-        [DisplayName("Id To Password Hash"), Expression("jIdTo.[PasswordHash]")]
-        public String IdToPasswordHash
-        {
-            get { return Fields.IdToPasswordHash[this]; }
-            set { Fields.IdToPasswordHash[this] = value; }
-        }
-
-        [DisplayName("Id To Password Salt"), Expression("jIdTo.[PasswordSalt]")]
-        public String IdToPasswordSalt
-        {
-            get { return Fields.IdToPasswordSalt[this]; }
-            set { Fields.IdToPasswordSalt[this] = value; }
         }
 
         [DisplayName("Id To Last Directory Update"), Expression("jIdTo.[LastDirectoryUpdate]")]
@@ -302,8 +274,6 @@ namespace GraduateThesisManager.Common.Entities
             public StringField IdFromDisplayName;
             public StringField IdFromEmail;
             public StringField IdFromSource;
-            public StringField IdFromPasswordHash;
-            public StringField IdFromPasswordSalt;
             public DateTimeField IdFromLastDirectoryUpdate;
             public StringField IdFromUserImage;
             public DateTimeField IdFromInsertDate;
@@ -316,8 +286,6 @@ namespace GraduateThesisManager.Common.Entities
             public StringField IdToDisplayName;
             public StringField IdToEmail;
             public StringField IdToSource;
-            public StringField IdToPasswordHash;
-            public StringField IdToPasswordSalt;
             public DateTimeField IdToLastDirectoryUpdate;
             public StringField IdToUserImage;
             public DateTimeField IdToInsertDate;

@@ -10,8 +10,6 @@
         LecturerDisplayName?: string;
         LecturerEmail?: string;
         LecturerSource?: string;
-        LecturerPasswordHash?: string;
-        LecturerPasswordSalt?: string;
         LecturerLastDirectoryUpdate?: string;
         LecturerUserImage?: string;
         LecturerInsertDate?: string;
@@ -42,8 +40,6 @@
             LecturerDisplayName = "LecturerDisplayName",
             LecturerEmail = "LecturerEmail",
             LecturerSource = "LecturerSource",
-            LecturerPasswordHash = "LecturerPasswordHash",
-            LecturerPasswordSalt = "LecturerPasswordSalt",
             LecturerLastDirectoryUpdate = "LecturerLastDirectoryUpdate",
             LecturerUserImage = "LecturerUserImage",
             LecturerInsertDate = "LecturerInsertDate",
